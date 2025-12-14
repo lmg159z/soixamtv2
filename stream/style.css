@@ -1,0 +1,250 @@
+/* =========================================
+   CONTAINER CHÍNH (BỐ CỤC CHỐNG VỠ)
+   ========================================= */
+#tv-show {
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép rớt dòng khi màn hình nhỏ hoặc zoom to */
+    align-items: flex-start;
+    /* Các cột cao tự nhiên, không kéo dãn cưỡng ép */
+    background-color: #051025;
+    /* Màu nền chính */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 95%;
+    gap: 20px;
+    /* Khoảng cách giữa 2 cột */
+    margin: 0 auto;
+}
+
+/* =========================================
+   CỘT TRÁI: VIDEO PLAYER & THÔNG TIN
+   ========================================= */
+.tv-main-column {
+    /* Cơ chế Flex thông minh:
+       - flex-grow: 1 (giãn ra)
+       - flex-shrink: 1 (co lại)
+       - flex-basis: 600px (kích thước cơ sở)
+       -> Nếu không gian < 600px, nó sẽ kích hoạt xuống dòng */
+    flex: 1 1 600px;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Fix lỗi video không co nhỏ trên Firefox */
+    position: relative;
+}
+
+/* Khung chứa Video (Luôn giữ tỷ lệ 16:9) */
+#tv-show__live {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Ratio */
+    background: #000;
+    border-radius: 8px;
+    /* Bo góc nhẹ cho hiện đại */
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Tạo chiều sâu */
+}
+
+#myVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    /* Đảm bảo nhìn thấy toàn bộ video */
+}
+
+/* Phần thông tin dưới video */
+.tv-show__info {
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.video-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    word-wrap: break-word;
+    /* Tự xuống dòng nếu chữ quá dài */
+}
+
+.video-meta {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép nút share rớt dòng khi cần */
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    color: #8a9bb5;
+    font-size: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Đường kẻ mờ phân cách */
+}
+
+/* Nút Chia sẻ (Style đẹp) */
+.btn-share {
+    background-color: #1c2b45;
+    color: #aebbd4;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-share:hover {
+    background-color: #3b82f6;
+    /* Màu xanh nổi bật khi hover */
+    color: #fff;
+}
+
+/* =========================================
+   CỘT PHẢI: DANH SÁCH VIDEO (SIDEBAR)
+   ========================================= */
+#tv-show__schedule {
+    /* Cố định chiều rộng 350px, không co giãn */
+    flex: 0 0 350px;
+    width: 350px;
+
+    background-color: #0a1a36;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    /* Giới hạn chiều cao để có thanh cuộn, tránh làm trang quá dài */
+    max-height: calc(100vh - 40px);
+    overflow: hidden;
+    /* Ẩn phần thừa của container */
+}
+
+.schedule-header {
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid #1c2b45;
+    background-color: #0e2245;
+    /* Màu tiêu đề đậm hơn chút */
+    border-radius: 8px 8px 0 0;
+}
+
+.schedule-list {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    /* Chỉ cuộn phần danh sách */
+}
+
+/* Tùy chỉnh thanh cuộn (Scrollbar) cho đẹp */
+.schedule-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.schedule-list::-webkit-scrollbar-track {
+    background: #0a1a36;
+}
+
+.schedule-list::-webkit-scrollbar-thumb {
+    background: #2a3f60;
+    border-radius: 3px;
+}
+
+.schedule-list::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+/* Item Video trong danh sách */
+.video-item {
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    /* transition: background 0.2s; */
+    border-radius: 6px;
+}
+
+.video-item:hover .title {
+    color: #3b82f6;
+    /* Đổi màu chữ khi hover */
+}
+
+.video-item__thumb {
+    position: relative;
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.video-item__thumb img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.video-item__thumb .duration {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.video-item__info .title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #e1e1e1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Cắt dòng thứ 2 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+}
+
+/* =========================================
+   RESPONSIVE (MOBILE & TABLET)
+   ========================================= */
+@media (max-width: 990px) {
+    /* Khi màn hình < 991px (Tablet dọc / Mobile) */
+
+    #tv-show__schedule {
+        flex: 1 1 100%;
+        /* Sidebar xuống dòng và chiếm full chiều rộng */
+        width: 100%;
+        max-height: 500px;
+        /* Giới hạn chiều cao trên mobile */
+    }
+
+    .tv-main-column {
+        flex: 1 1 100%;
+        /* Video chiếm full chiều rộng */
+    }
+
+    .video-title {
+        font-size: 18px;
+        /* Giảm cỡ chữ tiêu đề chút cho gọn */
+    }
+}

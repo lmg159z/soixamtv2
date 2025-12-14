@@ -1,0 +1,14 @@
+:root {
+    --tv-height: 500px;
+    --bg-color: #0b0b0b; /* Đen sâu hơn chút */
+    --text-color: #ffffff;
+    --accent-color: #ff6d00; /* Màu đỏ */
+    --badge-bg: #8e24aa;
+    --bg-dark: #050b14;
+    --bg-sidebar: #0f172a;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --accent-color: #3b82f6;
+    --border-color: #1e293b;
+    --hover-bg: #1e293b;
+}

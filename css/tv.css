@@ -1,0 +1,457 @@
+:root {
+    --tv-height: 500px;
+}
+
+#tv-show {
+    display: flex;
+    width: 100%;
+    height: var(--tv-height);
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#tv-show__live {
+    height: 100%;
+    aspect-ratio: 16/9;
+}
+
+#tv-show__live iframe,
+#tv-show__live video {
+    border-radius: 20px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#tv-show__schedule {
+    flex: 1;
+    min-width: 200px;
+    margin-left: 20px;
+    height: 100%;
+    background-color: #1b1a19;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@media (max-width:1190px) {
+    #tv-show {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        padding-bottom: 30px;
+    }
+
+    #tv-show__live {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        margin-bottom: 20px;
+    }
+
+    #tv-show__schedule {
+        margin-left: 0;
+        width: 100%;
+        height: 400px;
+        flex: none;
+    }
+}
+
+/* HEADER */
+.schedule-header {
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--container-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.channel-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.date-selector-wrapper {
+    position: relative;
+}
+
+.date-picker {
+    background: #2a2a2a;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.date-picker:hover {
+    background: #3a3a3a;
+}
+
+.arrow-icon {
+    transition: 0.3s;
+}
+
+.date-selector-wrapper.open .arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* DROPDOWN */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 220px;
+    background: #333;
+    border-radius: 8px;
+    padding: 8px 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    flex-direction: column;
+    z-index: 99;
+}
+
+.date-selector-wrapper.open .dropdown-menu {
+    display: flex;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-item:hover,
+.dropdown-item.selected {
+    background: #444;
+    color: #fff;
+}
+
+/* LIST */
+.schedule-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.schedule-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.schedule-list::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.schedule-item {
+    display: flex;
+    padding: 16px;
+    gap: 16px;
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.item-time {
+    width: 45px;
+    flex-shrink: 0;
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.program-name {
+    text-align: left;
+}
+
+.schedule-item.past .program-name {
+    color: #ccc;
+}
+
+.schedule-item.future .program-name {
+    color: #666;
+}
+
+/* ACTIVE */
+.schedule-item.active {
+    background: var(--item-active-bg);
+    padding: 20px 16px;
+    position: relative;
+}
+
+.item-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.live-badge {
+    background: var(--accent-red);
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.item-content-full {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.active-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Progress */
+.progress-container {
+    width: 100%;
+    height: 3px;
+    background: #444;
+    border-radius: 2px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #fff;
+    border-radius: 2px;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: -3.5px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+/* Equalizer */
+.equalizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.equalizer span {
+    width: 3px;
+    background: #ff5722;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.equalizer span:nth-child(1) {
+    height: 60%;
+    animation-delay: 0.1s;
+}
+
+.equalizer span:nth-child(2) {
+    height: 100%;
+    animation-delay: 0.2s;
+}
+
+.equalizer span:nth-child(3) {
+    height: 50%;
+}
+
+/* Animations */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scaleY(0.5);
+        opacity: .6;
+    }
+
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.channels-nav-bar {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+
+    /* QUAN TRỌNG: Cho phép cuộn ngang */
+    overflow-x: auto;
+    white-space: nowrap;
+
+    /* Trải nghiệm vuốt mượt trên mobile */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Padding để khi cuộn nội dung không bị sát lề */
+    padding: 0 10px;
+}
+
+/* Ẩn thanh cuộn (Scrollbar) cho Chrome, Safari, Edge */
+.channels-nav-bar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Ẩn thanh cuộn cho Firefox */
+.channels-nav-bar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.channels-nav-item {
+    text-decoration: none;
+    color: #aaa;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 15px 0;
+    /* Padding trên dưới để dễ bấm */
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+    flex-shrink: 0;
+    /* Đảm bảo item không bị co nhỏ lại */
+}
+
+.channels-nav-item:hover {
+    color: #fff;
+}
+
+.channels-nav-item.active {
+    color: #fff;
+}
+
+.channels-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+/* --- LƯỚI KÊNH --- */
+.channel-grid {
+    display: grid;
+    /* Tự động chỉnh cột: nhỏ nhất 200px, lớn nhất là chia đều */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 10px 0;
+}
+
+/* --- THẺ KÊNH --- */
+.channel-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.card-thumbnail {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-image: url("https://vtvprime.vn/default/placeholderChannel.png");
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.channel-card:hover .card-thumbnail {
+    border-color: #fff;
+    transform: scale(1.03);
+    /* Phóng to nhẹ khi hover */
+    z-index: 2;
+}
+
+.channel-logo {
+    max-width: 65%;
+    max-height: 65%;
+    object-fit: contain;
+}
+
+.premium-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: #ff5722 ;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+}
+
+.channel-name {
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Cắt chữ nếu tên quá dài */
+}
+
+/* Media Query cho màn hình điện thoại */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .channel-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Trên mobile bắt buộc 2 cột */
+        gap: 12px;
+    }
+
+    .nav-item {
+        font-size: 14px;
+        margin-right: 10px;
+        /* Thêm khoảng cách nhỏ giữa các item */
+    }
+}
