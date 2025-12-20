@@ -1,14 +1,4 @@
 
-
-
-
-function toHHMM(ms) {
-    const date = new Date(ms);
-    const hh = String(date.getHours()).padStart(2, '0');
-    const mm = String(date.getMinutes()).padStart(2, '0');
-    return `${hh}:${mm}`;
-}
-
 function getNgayThang(offset = 0) {
     const today = new Date();
     today.setDate(today.getDate() + offset);
@@ -21,27 +11,27 @@ function getNgayThang(offset = 0) {
 
 
 
-async function schedule(channel) {
+async function schedules(channel) {
+    console.log(channel)
+    if (channel != null){
     const data = await getAPI(`${channel}`)
+    var htmlSchedule = data.items.map(i => {
+        const now = Date.now();
 
-    if (data) {
-        var htmlSchedule = data.items.map(i => {
-            const now = Date.now();
-
-            if (i.stopMs < now) {
-                return `
+        if (i.stopMs < now) {
+            return `
             <div class="schedule-item past">
-        <div class="item-time">${toHHMM(i.startMs)}</div>
-        <div class="item-content">
-            <div class="program-name">${i.title}</div>
-        </div>
-        <div class="item-action-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-        </div>
-    </div>`; // đã qua thời gian phát
-            }
-            else if (i.startMs <= now && now < i.stopMs) {
-                return `
+                <div class="item-time">${toHHMM(i.startMs)}</div>
+                <div class="item-content">
+                    <div class="program-name">${i.title}</div>
+                </div>
+                <div class="item-action-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                </div>
+            </div>`; // đã qua thời gian phát
+        }
+        else if (i.startMs <= now && now < i.stopMs) {
+            return `
                 <div class="schedule-item active">
             <div class="item-sidebar">
                 <div class="live-badge">● LIVE</div>
@@ -55,26 +45,39 @@ async function schedule(channel) {
                 </div>
             </div>
         </div>`; // đang trong khoảng phát
-            }
-            else {
-                return `
+        }
+        else {
+            return `
                 <div class="schedule-item future">
                     <div class="item-time">${toHHMM(i.startMs)}</div>
                     <div class="item-content">
                         <div class="program-name">${i.title}</div>
                     </div>
                 </div>`; // chưa tới thời gian phát
-            }
-        })
-    }
-    else {
-        return "Không có dữ liệu phát sóng"
+        }
+    })
+    }else{
+        var  htmlSchedule = [`
+            <div class="schedule-item active">
+            <div class="item-sidebar">
+                <div class="live-badge">● LIVE</div>
+            </div>
+            <div class="item-content-full">
+                <div class="active-header">
+                    <span class="program-name">Không có lịch phát sóng</span>
+                    <div class="equalizer">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            `]
     }
 
-    const idHTML = document.getElementById("tv-show__schedule")
-    idHTML.innerHTML = `
+const idHTML = document.getElementById("tv-show__schedule")
+idHTML.innerHTML = `
             <div class="schedule-header">
-                <div class="channel-name">${data.channelName}</div>
+                <div class="channel-name">LỊCH PHÁT SÓNG</div>
                 <div class="date-selector-wrapper">
                     <div class="date-picker" onclick="toggleDateDropdown()">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>

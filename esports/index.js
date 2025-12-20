@@ -7,7 +7,11 @@ async function list(
 
     const lists = API?.pageProps?.lists;
     if (!lists) return;
-
+    HeaderTitle.set({
+        icon: "",
+        title: lists.name,
+        suffix: ""  
+         });
     // 👉 Trường hợp có categories
     if (lists.categories) {
         esport.innerHTML = lists.categories.map(cat => `
@@ -24,6 +28,7 @@ async function list(
 
     // 👉 Trường hợp mặc định (contents)
     if (lists.contents) {
+        
         esport.innerHTML = `
             <h2 class="section-header">${lists.name}</h2>
             <div class="video-grid is-default">

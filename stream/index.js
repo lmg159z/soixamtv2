@@ -25,7 +25,12 @@
     const titleTM = document.getElementById("video-time");
     titleEl.textContent = API.pageProps.initVideo.name;
     titleTM.textContent = formatDateTime(API.pageProps.initVideo.created)
-     loadPlayer({
+    HeaderTitle.set({
+            icon: API.pageProps.initVideo.is_live === true ? "TRỰC TIẾP": "",
+            title: API.pageProps.initVideo.name,
+            suffix: ""  
+            });
+    loadPlayer({
         url: API.pageProps.initVideo.url,
         drm: false,
         kid: '',

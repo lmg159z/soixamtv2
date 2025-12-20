@@ -15,8 +15,13 @@ async function list(
 
     /* ===== Trường hợp categories ===== */
     if (type === 1 && Array.isArray(API?.pageProps?.screenblocks)) {
+        HeaderTitle.set({
+            icon: "",
+            title: "Thể thao tổng hợp",
+            suffix: ""
+        });
         esport.innerHTML = API.pageProps.screenblocks
-            .filter(cat => 
+            .filter(cat =>
                 cat.events &&
                 !EXCLUDE_IDS.has(cat.id)
             )
@@ -34,6 +39,11 @@ async function list(
         return;
     }
     if (type === 2 && API?.data) {
+        HeaderTitle.set({
+            icon: "",
+            title: API.block?.name,
+            suffix: ""
+        });
         esport.innerHTML = `
             <h2 class="section-header">${API.block?.name ?? ""}</h2>
             <div class="video-grid is-default">
@@ -44,30 +54,61 @@ async function list(
 }
 
 function renderVideoCard(item) {
-    if (!item.is_protected){
+    if (item.is_protected) return "";
+
+    let st = "";
+
+    switch (item.status) {
+        case "live":
+            st = "TRỰC TIẾP";
+            break;
+
+        case "not_started":
+            st = formatDateTime(item.start_time);
+            break;
+
+        default:
+            st = toMMSS(item.duration);
+    }
+
+    const isLive = item.status === "live";
+
     return `
         <a href="/stream/index.html?id=${item.id}&type=${item.type}">
             <div class="video-card">
                 <div class="thumbnail-wrapper">
-                    <img src="${item.thumbnail_horizontal}" 
-                         alt="${item.name}" 
-                         class="thumbnail-img"
-                         onerror="this.src='/img/no-thumb.jpg'">
-                    <span class="timestamp" ${item.status === "live" ? "style='background-color: red'" :""}>${item.status === "live" ? "TRỰC TIẾP" : toMMSS(item.duration)}</span>
+                    <img 
+                        src="${item.thumbnail_horizontal}"
+                        alt="${item.name}"
+                        class="thumbnail-img"
+                        onerror="this.src='/img/no-thumb.jpg'"
+                    >
+                    <span class="timestamp" ${isLive ? "style='background-color:red'" : ""}>
+                        ${st}
+                    </span>
                     <div class="play-overlay"></div>
                 </div>
+
                 <div class="video-info">
                     <h3 class="video-title">${item.name}</h3>
                 </div>
             </div>
         </a>
-    `;}
+    `;
 }
 
 
+function formatDateTime(isoString) {
+    const date = new Date(isoString);
 
+    const HH = String(date.getUTCHours()).padStart(2, '0');
+    const MM = String(date.getUTCMinutes()).padStart(2, '0');
+    const DD = String(date.getUTCDate()).padStart(2, '0');
+    const MMth = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const YYYY = date.getUTCFullYear();
 
-
+    return `${HH}:${MM}-${DD}/${MMth}/${YYYY}`;
+}
 if (getQueryParam("slug") === null) {
     list()
 }

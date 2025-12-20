@@ -350,14 +350,14 @@ footer {
 /* Watermark */
 .yt-watermark {
   position: absolute;
-  top:90%;
-  right: 5%;
+  top: 85%;
+  right: -2%;
 
   /* KÍCH THƯỚC LOGO */
-  width: 10%;
+  width: 25%;
   height: auto;
   aspect-ratio: 4 / 1; /* auto scaling, đổi theo logo của bạn */
-  background-image: url("https://vtvprime.vn/logo/logo.png");
+  background-image: url("/media/logo/SXTV.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

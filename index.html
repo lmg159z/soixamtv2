@@ -4,174 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV360 Header Footer - Mobile Responsive</title>
-    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-http-source-selector/dist/videojs-http-source-selector.css">
+    <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-http-source-selector/dist/videojs-http-source-selector.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/controls.css">
-
-    <link rel="stylesheet" href="./css/root.css">
-    <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/tv.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/tv.css">
 
 </head>
 
 <body>
 
     <!-- === HEADER === -->
-    <header>
-        <div class="header-left">
-            <!-- Nút Hamburger Mobile -->
-            <div class="hamburger" id="hamburger-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-
-            <!-- Logo -->
-            <a href="#" class="logo">SX<span>TV</span></a>
-
-            <!-- Menu Điều hướng -->
-            <ul class="nav-menu" id="nav-menu">
-                <!-- Thêm ô tìm kiếm vào trong Menu khi ở Mobile -->
-                <li style="border:none; padding-bottom:10px;" class="mobile-only-search"></li>
-                <!-- Placeholder vị trí search mobile nếu muốn -->
-                <!-- <li><a href="#" class="active">Trang chủ</a></li>
-                <li><a href="#">Truyền hình</a></li>
-                <li><a href="#">HBO Go</a></li>
-                <li><a href="#">Phim</a></li>
-                <li><a href="#">Thể thao</a></li>
-                <li><a href="#">TV Show</a></li>
-                <li><a href="#">Kho phim VIP</a></li> -->
-            </ul>
-        </div>
-
-        <div class="header-right">
-            <!-- Search Box (Desktop) -->
-            <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm...">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-
-            <!-- Icon Search (Mobile) -->
-            <div class="mobile-search-icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-
-            <!-- Chú ý: Ẩn chữ 'Đăng nhập' trên mobile để đỡ chật, chỉ hiện icon -->
-        </div>
-    </header>
+    <header id="header"> </header>
 
     <!-- === CONTENT === -->
     <main class="main-content">
-        <!-- <div class="placeholder-box">
-            <h3>PHẦN CONTENT (BỎ QUA)</h3>
-            <p>Thu nhỏ trình duyệt hoặc mở trên điện thoại để xem Menu Mobile</p>
-        </div> -->
-        <!-- Dán code này vào bên trong thẻ <main> của file HTML trước -->
-
-
-        <!-- tv show start -->
-        <div id="tv-show" >
+        <div id="tv-show">
             <div id="tv-show__live" data-shaka-player-container>
                 <video id="myVideo" data-shaka-player style="width:100%; height:100%;"></video>
                 <div class="yt-watermark"></div>
-             
+
             </div>
-            <div id="tv-show__schedule">
-                <!-- Header -->
-                <!-- <div class="schedule-header">
-                            <div class="channel-name">VTV1 HD</div>
-                            
-                            <div class="date-selector-wrapper">
-                                <div class="date-picker" onclick="toggleDateDropdown()">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                    <span>Hôm nay, 08/12</span>
-                                    <svg class="arrow-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                                </div>
-
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-item">Thứ Sáu, 05/12</div>
-                                    <div class="dropdown-item">Thứ Bảy, 06/12</div>
-                                    <div class="dropdown-item">Hôm qua, 07/12</div>
-                                    <div class="dropdown-item selected">
-                                        <span>Hôm nay, 08/12</span>
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    </div>
-                                    <div class="dropdown-item">Ngày mai, 09/12</div>
-                                    <div class="dropdown-item">Thứ Tư, 10/12</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="schedule-list">
-                            
-                            <div class="schedule-item past">
-                                <div class="item-time">13:50</div>
-                                <div class="item-content">
-                                    <div class="program-name">Giao lưu điển hình tiêu biểu trong Học và làm theo Bác</div>
-                                </div>
-                                <div class="item-action-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-                                </div>
-                            </div>
-
-                            <div class="schedule-item active">
-                                <div class="item-sidebar">
-                                    <div class="live-badge">● LIVE</div>
-                                </div>
-                                <div class="item-content-full">
-                                    <div class="active-header">
-                                        <span class="program-name">Ánh sáng tri thức: Đổi mới giáo dục...</span>
-                                        <div class="equalizer">
-                                            <span></span><span></span><span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                           
-                            <div class="schedule-item future">
-                                <div class="item-time">15:10</div>
-                                <div class="item-content">
-                                    <div class="program-name">Doanh nghiệp - Doanh nhân: Nâng cao vị thế ngành bán dẫn</div>
-                                </div>
-                            </div> 
-                        </div> -->
-            </div>
+            <div id="tv-show__schedule"></div>
         </div>
-    
+
         <!-- tv show end -->
 
         <div id="channels">
-            <nav class="channels-nav-bar" id="channels-bar">
-                <!-- <div class="channels-nav-item active">Tất cả các kênh</div>
-                <div class="channels-nav-item">Kênh yêu thích</div>
-                 -->
-            </nav>
+            <nav class="channels-nav-bar" id="channels-bar"></nav>
 
             <!-- LƯỚI KÊNH -->
-            <div class="channel-grid" id="channels-list">
-<!--                
-                 <div class="channel-card">
-                    <div class="card-thumbnail" style="border-color: #fff;">
-                        <img src="https://img.vtvprime.vn/3besFRMbi8HdBDsdgQNVFnTWi7KiLruKJ7uTXobHG2g/rs:fit:836:468/czM6Ly9wcmQtc24taW1hZ2VzL2NoYW5uZWwvYzQ0ZjFjMGMtYTAzOC00ZWMxLThiZWUtNDJlNTBmMjE1YTI4LnBuZw==.png"
-                            alt="VTV1" class="channel-logo">
-                    </div>
-                    <div class="channel-name">VTV1</div>
-                </div>
-
-                <div class="channel-card">
-                    <div class="card-thumbnail">
-                        <div class="premium-badge">♕ Premium</div>
-                        <img src="https://img.vtvprime.vn/3besFRMbi8HdBDsdgQNVFnTWi7KiLruKJ7uTXobHG2g/rs:fit:836:468/czM6Ly9wcmQtc24taW1hZ2VzL2NoYW5uZWwvYzQ0ZjFjMGMtYTAzOC00ZWMxLThiZWUtNDJlNTBmMjE1YTI4LnBuZw==.png"
-                            alt="VTV1" class="channel-logo">
-                    </div>
-                    <div class="channel-name">ON Music</div>
-                </div>
-                 -->
-            </div>
+            <div class="channel-grid" id="channels-list"> </div>
         </div>
 
 
@@ -179,59 +43,15 @@
 
     </main>
     <!-- === FOOTER === -->
-    <footer>
-        <div class="footer-container">
-            <!-- Cột 1: Thông tin công ty -->
-            <div class="footer-col company-info">
-                <a href="#" class="logo" style="display:block; margin-bottom:15px;">SX<span>TV</span></a>
-                <p>Cơ quan chủ quản: Hệ sinh thái Sói Xám Studio .</p>
-                <p>Địa chỉ: Hà Nội, Việt Nam.</p>
-
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-
-            <!-- Cột 2: Dịch vụ -->
-            <div class="footer-col">
-                <h4>Dịch vụ</h4>
-                <ul>
-                    <li><a href="#">Gói cước Mobile</a></li>
-                    <li><a href="#">Dịch vụ truyền hình</a></li>
-                    <li><a href="#">Thể thao trực tiếp</a></li>
-                </ul>
-            </div>
-
-            <!-- Cột 3: Hỗ trợ -->
-            <div class="footer-col">
-                <h4>Hỗ trợ</h4>
-                <ul>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Trung tâm hỗ trợ</a></li>
-                    <li><a href="#">Liên hệ quảng cáo</a></li>
-                </ul>
-            </div>
-
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 SoiXamTV & XanhAD. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer id="footer"> </footer>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.compiled.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="./javaScript/index.js"></script>
-    <script src="./javaScript/layout.js"></script>
-    <script src="./javaScript/schedule.js"></script>
-    <script src="./javaScript/tv.js"></script>
-    <script src="./javaScript/getChannel.js"></script>
+    <script src="/javaScript/index.js" ></script>
+    <script src="/javaScript/layout.js" defer ></script>
+    <script src="/javaScript/schedule.js" ></script>
+    <script src="/javaScript/tv.js" ></script>
+    <script src="/javaScript/getChannel.js" ></script>
 </body>
-
 </html>

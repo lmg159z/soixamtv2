@@ -1,3 +1,105 @@
+
+
+console.log(document.getElementById("header"));
+
+
+
+const idHeader = document.getElementById("header")
+idHeader.innerHTML = `
+
+        <div class="header-left">
+            <!-- Nút Hamburger Mobile -->
+            <div class="hamburger" id="hamburger-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <!-- Logo -->
+            <a href="/" class="logo">SX<span>TV</span></a>
+
+            <!-- Menu Điều hướng -->
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Thêm ô tìm kiếm vào trong Menu khi ở Mobile -->
+                <li style="border:none; padding-bottom:10px;" class="mobile-only-search"></li>
+                <!-- Placeholder vị trí search mobile nếu muốn -->
+                <!-- <li><a href="#" class="active">Trang chủ</a></li>
+                <li><a href="#">Truyền hình</a></li>
+                <li><a href="#">HBO Go</a></li>
+                <li><a href="#">Phim</a></li>
+                <li><a href="#">Thể thao</a></li>
+                <li><a href="#">TV Show</a></li>
+                <li><a href="#">Kho phim VIP</a></li> -->
+            </ul>
+        </div>
+
+        <div class="header-right">
+            <!-- Search Box (Desktop) -->
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <!-- Icon Search (Mobile) -->
+            <div class="mobile-search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <!-- Chú ý: Ẩn chữ 'Đăng nhập' trên mobile để đỡ chật, chỉ hiện icon -->
+        </div>
+   
+`
+
+const idFooter = document.getElementById("footer")
+
+idFooter.innerHTML = `
+
+        <div class="footer-container">
+            <!-- Cột 1: Thông tin công ty -->
+            <div class="footer-col company-info">
+                <a href="#" class="logo" style="display:block; margin-bottom:15px;">SX<span>TV</span></a>
+                <p>Cơ quan chủ quản: Hệ sinh thái Sói Xám Studio .</p>
+                <p>Địa chỉ: Hà Nội, Việt Nam.</p>
+
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Cột 2: Dịch vụ -->
+            <div class="footer-col">
+                <h4>Dịch vụ</h4>
+                <ul>
+                    <li><a href="#">Gói cước Mobile</a></li>
+                    <li><a href="#">Dịch vụ truyền hình</a></li>
+                    <li><a href="#">Thể thao trực tiếp</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Hỗ trợ -->
+            <div class="footer-col">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Trung tâm hỗ trợ</a></li>
+                    <li><a href="#">Liên hệ quảng cáo</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 SoiXamTV & XanhAD. All rights reserved.</p>
+        </div>
+   
+`
+
+
+
+
+
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const navMenu = document.getElementById('nav-menu');
 const icon = hamburgerBtn.querySelector('i');
@@ -41,16 +143,8 @@ const menu = [
         link: "/esports"
     },
     {
-        name: "VOD thể thao",
-        link: "#"
-    },
-    {
         name: "Thể thao tổng hợp",
         link: "/theThaoTongHop"
-    },
-    {
-        name: "Xổ số",
-        link: "#"
     }
 ]
 
@@ -65,8 +159,5 @@ const dataHTML = menu.map(i => {
 })
 
 idMenu.innerHTML = dataHTML.join("")
-
-console.log(dataHTML.join(""))
-
 
 
