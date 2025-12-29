@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let dataChannel = null;   // lúc đầu chưa có dữ liệu
 
 const fetchDataChannel = (async () => {
+    // const res = await fetch("http://localhost:3000/api/logo");
     const res = await fetch("https://soixamapi.vercel.app/api/logo");
     const data = await res.json();
     dataChannel = data;   // gán vào biến global
