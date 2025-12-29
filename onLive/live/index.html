@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/controls.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/controls.css">
     <link rel="stylesheet" href="/css/root.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/tv.css">
+    <link rel="stylesheet" href="/onLive/style.css">
+
 
 </head>
 
@@ -20,39 +22,30 @@
 
     <!-- === CONTENT === -->
     <main class="main-content">
+
         <div id="tv-show">
             <div id="tv-show__live" data-shaka-player-container>
                 <video id="myVideo" data-shaka-player style="width:100%; height:100%;"></video>
                 <div class="yt-watermark"></div>
 
             </div>
-            <div id="tv-show__schedule"></div>
         </div>
-
-        <!-- tv show end -->
-
-        <div id="channels">
-            <nav class="channels-nav-bar" id="channels-bar"></nav>
-
-            <!-- LƯỚI KÊNH -->
-            <div class="channel-grid" id="channels-list"> </div>
+        <div id="onlive-title" class="onlive-title">
+            
         </div>
-
-
-
+        <div id="onLive" class="stream-container"></div>
 
     </main>
     <!-- === FOOTER === -->
     <footer id="footer"> </footer>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.compiled.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.ui.js"></script>
-    <script src="/javaScript/index.js" ></script>
-    <script src="/javaScript/layout.js" defer ></script>
-    <script src="/javaScript/schedule.js" ></script>
-    <script src="/javaScript/tv.js" ></script>
-    <script src="/javaScript/getChannel.js" ></script>
+    <script src="/javaScript/index.js"></script>
+    <script src="/javaScript/layout.js" defer></script>
+    <script src="/javaScript/tv.js"></script>
+    <script src="/onLive/live/index.js"></script>
+    <script src="/onLive/index.js"></script>
 </body>
+
 </html>

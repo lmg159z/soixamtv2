@@ -84,7 +84,7 @@ async function loadPlayer(config) {
     // 6. Load stream
     try {
         await player.load(config.url);
-        console.log("LOAD OK:", config.url);
+        // console.log("LOAD OK:", config.url);
     } catch (e) {
         console.error("LOAD ERROR:", e);
     }

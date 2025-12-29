@@ -1,3 +1,5 @@
+
+
 async function getAPI(url) {
     try {
         const res = await fetch(url);
@@ -96,73 +98,76 @@ function toHex(input) {
 
 
 
-// (function () {
-//     "use strict";
+// ===========================
 
-//     const THRESHOLD = 160;
-//     let reloaded = false;
+function encodeCustom(input) {
+  // Base64 lần 1
+  const base64_1 = btoa(unescape(encodeURIComponent(input)));
 
-//     /* =============================
-//        1. Detect DevTools đang mở
-//        - Nếu mở sẵn → reload
-//     ============================== */
-//     function isDevToolsOpen() {
-//         return (
-//             window.outerWidth - window.innerWidth > THRESHOLD ||
-//             window.outerHeight - window.innerHeight > THRESHOLD
-//         );
-//     }
+  // Đảo ngược chuỗi
+  const reversed = base64_1.split('').reverse().join('');
 
-//     setInterval(() => {
-//         if (isDevToolsOpen()) {
-//             if (!reloaded) {
-//                 reloaded = true;
-//                 location.reload();
-//             }
-//         }
-//     }, 300);
+  // Base64 lần 2
+  const base64_2 = btoa(reversed);
 
-//     /* =============================
-//        2. Chặn phím mở DevTools
-//     ============================== */
-//     document.addEventListener("keydown", function (e) {
-//         if (
-//             e.key === "F12" ||
-//             (e.ctrlKey && e.shiftKey && ["I", "C", "J"].includes(e.key)) ||
-//             (e.ctrlKey && e.key === "U")
-//         ) {
-//             e.preventDefault();
-//             e.stopPropagation();
-//             return false;
-//         }
-//     }, true);
+  return base64_2;
+}
 
-//     /* =============================
-//        3. Chặn chuột phải
-//     ============================== */
-//     document.addEventListener("contextmenu", function (e) {
-//         e.preventDefault();
-//         e.stopPropagation();
-//         return false;
-//     }, true);
 
-//     /* =============================
-//        4. debugger spam
-//        - Nếu cố mở → tab lag
-//     ============================== */
-//     setInterval(function () {
-//         debugger;
-//     }, 100);
+// function decodeCustom(encoded) {
+//   // Base64 giải lần 2
+//   const step1 = atob(encoded);
 
-//     /* =============================
-//        5. Detect console mở
-//     ============================== */
-//     const devtoolsDetector = new Image();
-//     Object.defineProperty(devtoolsDetector, "id", {
-//         get: function () {
-//             location.reload();
-//         }
-//     });
-//     console.log(devtoolsDetector);
+//   // Đảo ngược chuỗi
+//   const reversed = step1.split('').reverse().join('');
 
-// })();
+//   // Base64 giải lần 1
+//   const step2 = atob(reversed);
+
+//   // Fix Unicode (tiếng Việt, ký tự đặc biệt)
+//   const original = decodeURIComponent(escape(step2));
+
+//   return original;
+// }
+
+
+
+function decodeCustom(encoded) {
+  // Nếu không phải string → trả thẳng
+  if (typeof encoded !== "string") return encoded;
+
+  // Giải base64 lần 2
+  const step1 = safeAtob(encoded);
+  if (!step1) return encoded; // ❗ không phải encodeCustom
+
+  // Đảo ngược
+  const reversed = step1.split('').reverse().join('');
+
+  // Giải base64 lần 1
+  const step2 = safeAtob(reversed);
+  if (!step2) return encoded;
+
+  // Fix Unicode
+  try {
+    return decodeURIComponent(escape(step2));
+  } catch {
+    return step2;
+  }
+}
+
+
+function safeAtob(str) {
+  if (!str || typeof str !== "string") return null;
+
+  // Chuẩn base64url → base64
+  let s = str.replace(/-/g, "+").replace(/_/g, "/");
+
+  // Padding
+  while (s.length % 4 !== 0) s += "=";
+
+  try {
+    return atob(s);
+  } catch (e) {
+    return null;
+  }
+}

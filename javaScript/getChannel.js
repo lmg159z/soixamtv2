@@ -52,45 +52,109 @@ function innerinnerNavBarChannel() {
 
 
 function innerChannel(pl = "ALL") {
-    if (pl === "ALL") {
-        var listChannel = dataChannel.map(i => {
-            const channel = i.channel.map(k => {
-                return `
-                <a href="/index.html?channel=${k.id}" >
-                <div class="channel-card VAR-goTop" >
-                    <div class="card-thumbnail" style="border-color: #fff;">
-                        <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""} ">Mất tín hiệu</div>
-                        <img src="${k.logo}" alt="${k.acronym}" class="channel-logo" onerror="this.onerror=null; this.src='/media/logo/logo.png';">
-                    </div>
-                    <div class="channel-name">${k.acronym}</div>
-                </div></a>
-                `
+    var listChannel = [];
 
-            })
-            return channel.join("")
-        })
+    if (pl === "ALL") {
+        const usedIds = new Set();
+
+        listChannel = dataChannel.map(i => {
+            const channel = i.channel
+                .filter(k => {
+                    if (usedIds.has(k.id)) return false;
+                    usedIds.add(k.id);
+                    return true;
+                })
+                .map(k => {
+                    return `
+                    <a href="/index.html?channel=${k.id}">
+                        <div class="channel-card VAR-goTop">
+                            <div class="card-thumbnail" style="border-color: #fff;">
+                                <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""}">
+                                    Mất tín hiệu
+                                </div>
+                                <img src="${k.logo}" alt="${k.acronym}"
+                                     class="channel-logo"
+                                     onerror="this.onerror=null;this.src='/media/logo/logo.png';">
+                            </div>
+                            <div class="channel-name">${k.acronym}</div>
+                        </div>
+                    </a>
+                    `;
+                });
+
+            return channel.join("");
+        });
     }
     else {
-        var listChannel = dataChannel[pl].channel.map(k => {
+        listChannel = dataChannel[pl].channel.map(k => {
             return `
-        <a href="/index.html?channel=${k.id}" >
-            <div class="channel-card VAR-goTop" >
-                <div class="card-thumbnail" style="border-color: #fff;">
-                    <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""} ">Mất tín hiệu</div>
-                    <img src="${k.logo}" alt="${k.acronym}" class="channel-logo" onerror="this.onerror=null; this.src='/media/logo/logo.png';">
+            <a href="/index.html?channel=${k.id}">
+                <div class="channel-card VAR-goTop">
+                    <div class="card-thumbnail" style="border-color: #fff;">
+                        <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""}">
+                            Mất tín hiệu
+                        </div>
+                        <img src="${k.logo}" alt="${k.acronym}"
+                             class="channel-logo"
+                             onerror="this.onerror=null;this.src='/media/logo/logo.png';">
+                    </div>
+                    <div class="channel-name">${k.acronym}</div>
                 </div>
-                <div class="channel-name">${k.acronym}</div>
-            </div></a>
-            `
-
-        })
+            </a>
+            `;
+        });
     }
 
-
-    const idListChannel = document.getElementById("channels-list")
-    idListChannel.innerHTML = listChannel.join("")
+    document.getElementById("channels-list").innerHTML = listChannel.join("");
 }
+
+
+
+// function innerChannel(pl = "ALL") {
+//     if (pl === "ALL") {
+//         var listChannel = dataChannel.map(i => {
+//             const channel = i.channel.map(k => {
+//                 return `
+//                 <a href="/index.html?channel=${k.id}" >
+//                 <div class="channel-card VAR-goTop" >
+//                     <div class="card-thumbnail" style="border-color: #fff;">
+//                         <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""} ">Mất tín hiệu</div>
+//                         <img src="${k.logo}" alt="${k.acronym}" class="channel-logo" onerror="this.onerror=null; this.src='/media/logo/logo.png';">
+//                     </div>
+//                     <div class="channel-name">${k.acronym}</div>
+//                 </div></a>
+//                 `
+
+//             })
+//             return channel.join("")
+//         })
+//     }
+//     else {
+//         var listChannel = dataChannel[pl].channel.map(k => {
+//             return `
+//         <a href="/index.html?channel=${k.id}" >
+//             <div class="channel-card VAR-goTop" >
+//                 <div class="card-thumbnail" style="border-color: #fff;">
+//                     <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""} ">Mất tín hiệu</div>
+//                     <img src="${k.logo}" alt="${k.acronym}" class="channel-logo" onerror="this.onerror=null; this.src='/media/logo/logo.png';">
+//                 </div>
+//                 <div class="channel-name">${k.acronym}</div>
+//             </div></a>
+//             `
+
+//         })
+//     }
+
+
+//     const idListChannel = document.getElementById("channels-list")
+//     idListChannel.innerHTML = listChannel.join("")
+// }
 //   <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""} ">Mất tín hiệu</div>
+
+
+
+
+
 
 async function getChannel(id) {
 
@@ -103,35 +167,21 @@ async function getChannel(id) {
 });
     schedules(API[0].schedule)
     loadPlayer({
-        url: API[0].urlStream,
+        url: decodeCustom(API[0].urlStream),
         drm: API[0].drm,
-        kid: toHex(API[0].keyID),
-        key: toHex(API[0].key),
+        kid: toHex(decodeCustom(API[0].keyID)),
+        key: toHex(decodeCustom(API[0].key)),
         id: "myVideo"
     });
-
-
-// loadPlayer({
-//         url: "https://s2129134.cdn.mytvnet.vn/pkg20/live_dzones/hbo.smil/manifest.mpd",
-//         drm: true,
-//         kid: toHex("Cd3+PWOGPK+ut50FRrCYqw"),
-//         key: toHex("PeDzjc8BSCff1b7Dh0PGog"),
-//         id: "myVideo"
-//     });
 }
 
 
 
 
 if (getQueryParam("channel") === null) {
-
     getChannel("vtv1")
-
 } else {
     getChannel(getQueryParam("channel"))
 }
-
-
-
 
 

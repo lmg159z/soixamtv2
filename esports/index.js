@@ -1,6 +1,6 @@
 
 async function list(
-    url = "https://onplus.com.vn/_next/data/Zunl1uQ23SPeKMVfPQPaM/category.json?id=esports"
+    url = "https://onplus.com.vn/_next/data/j42WhsACa0rWDB-93l-DI/category.json?id=esports"
 ) {
     const API = await getAPI(`https://re.ghiminh1.workers.dev/?url=${url}`);
     const esport = document.getElementById("esport-content");
@@ -68,7 +68,7 @@ if (getQueryParam("id") === null) {
     list()
 }
 else {
-    list(`https://onplus.com.vn/_next/data/Zunl1uQ23SPeKMVfPQPaM/category/detail/${getQueryParam("id")}.json`)
+    list(`https://onplus.com.vn/_next/data/j42WhsACa0rWDB-93l-DI/category/detail/${getQueryParam("id")}.json`)
 }
 
 

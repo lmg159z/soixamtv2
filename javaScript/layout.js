@@ -1,9 +1,9 @@
+(async () =>{
 
-
-console.log(document.getElementById("header"));
-
-
-
+const infoDevice = await getAPI("https://free.freeipapi.com/api/json")
+if (infoDevice.isProxy){
+    alert("Vui lòng tắt proxy. Website hỗ trợ tốt nhất trên khu vực Nước Cộng hòa Xã hội Chủ nghĩa Việt Nam")
+}
 const idHeader = document.getElementById("header")
 idHeader.innerHTML = `
 
@@ -78,20 +78,30 @@ idFooter.innerHTML = `
 
             <!-- Cột 3: Hỗ trợ -->
             <div class="footer-col">
-                <h4>Hỗ trợ</h4>
+                <h4>Đối tác</h4>
                 <ul>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Trung tâm hỗ trợ</a></li>
-                    <li><a href="#">Liên hệ quảng cáo</a></li>
+                    <li><a href="https://vnepg.site/">VNEPG - EPG Việt Nam</a></li>
+                    <li><a href="https:fptplay.vn">FPTPlay</a></li>
+                    <li><a href="https://mytv.com.vn/">MyTV</a></li>
+                    <li><a href="https://tv360.vn">TV360</a></li>
                 </ul>
             </div>
-
+            <div class="footer-col">
+                <h4>Thông tin của bạn</h4>
+                <ul>
+                <li>IP: ${infoDevice.ipAddress}</li>
+                <li>Quốc gia: ${infoDevice.countryName}</li>
+                <li>Múi giờ: ${infoDevice.timeZones[0]}</li>
+                <li>Thành phố: ${infoDevice.cityName}</li>
+                <li>Nhà mạng: ${infoDevice.asnOrganization}</li>
+                <li>Trạng thái proxy: ${infoDevice.isProxy === false ? "Không" : "Có"}</li>
+                </ul>
+            </div>
 
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 SoiXamTV & XanhAD. All rights reserved.</p>
+            <p>&copy; 2025 SoiXamTV. All rights reserved.</p>
         </div>
    
 `
@@ -127,12 +137,6 @@ document.querySelector('.main-content').addEventListener('click', () => {
     }
 });
 
-
-
-
-
-// ===========================
-
 const menu = [
     {
         name: "Trang chủ",
@@ -145,6 +149,14 @@ const menu = [
     {
         name: "Thể thao tổng hợp",
         link: "/theThaoTongHop"
+    },
+    {
+        name: "Livestream",
+        link: "/onLive"
+    },
+    {
+        name: "FPTPlay",
+        link: "/fpt"
     }
 ]
 
@@ -161,3 +173,12 @@ const dataHTML = menu.map(i => {
 idMenu.innerHTML = dataHTML.join("")
 
 
+
+})()
+
+
+
+
+
+
+// ===========================
