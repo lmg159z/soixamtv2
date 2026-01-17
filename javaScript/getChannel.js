@@ -69,11 +69,11 @@ function innerChannel(pl = "ALL") {
                     return `
                     <a href="/index.html?channel=${k.id}">
                         <div class="channel-card VAR-goTop">
-                            <div class="card-thumbnail" style="border-color: #fff;">
+                            <div class="card-thumbnail" style="border-color: #fff; ${k.logo === "" ? `background-image: url('${k.thumb}');background-size: cover; background-position: center;background-repeat: no-repeat` : ''}">
                                 <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""}">
                                     Mất tín hiệu
                                 </div>
-                                <img src="${k.logo}" alt="${k.acronym}"
+                                <img style="display: ${k.logo === "" ? 'none' : 'block'}" src="${k.logo}" alt="${k.acronym}"
                                      class="channel-logo"
                                      onerror="this.onerror=null;this.src='/media/logo/logo.png';">
                             </div>
@@ -91,11 +91,11 @@ function innerChannel(pl = "ALL") {
             return `
             <a href="/index.html?channel=${k.id}">
                 <div class="channel-card VAR-goTop">
-                    <div class="card-thumbnail" style="border-color: #fff;">
-                        <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""}">
+                   <div class="card-thumbnail" style="border-color: #fff; ${k.logo === "" ? `background-image: url('${k.thumb}');background-size: cover; background-position: center;background-repeat: no-repeat` : ''}">
+                         <div class="premium-badge" style="display: ${k.status == "live" ? "none" : ""}">
                             Mất tín hiệu
                         </div>
-                        <img src="${k.logo}" alt="${k.acronym}"
+                         <img style="display: ${k.logo === "" ? 'none' : 'block'}" src="${k.logo}" alt="${k.acronym}"
                              class="channel-logo"
                              onerror="this.onerror=null;this.src='/media/logo/logo.png';">
                     </div>
@@ -162,10 +162,10 @@ async function getChannel(id) {
     const API = await getAPI(`https://soixamapi.vercel.app/api/channel?id=${id}`)
 
     HeaderTitle.set({
-    icon: "🔴",
-    title: "TRỰC TIẾP",
-    suffix: `${API[0].name} | ${API[0].acronym}`  
-});
+        icon: "🔴",
+        title: "TRỰC TIẾP",
+        suffix: `${API[0].name} | ${API[0].acronym}`
+    });
     schedules(API[0].schedule)
     loadPlayer({
         url: decodeCustom(API[0].urlStream),
@@ -174,6 +174,27 @@ async function getChannel(id) {
         key: toHex(decodeCustom(API[0].key)),
         id: "myVideo"
     });
+
+    const offset = API[0].watermark; // hoặc ""
+
+    const el = document.querySelector(".yt-watermark");
+
+    if (el && offset.trim()) {
+        const currentTransform = el.style.transform || "";
+
+        if (/translate\([^)]*\)/.test(currentTransform)) {
+            // 🔁 Có translate → ghi đè đúng translate
+            el.style.transform = currentTransform.replace(
+                /translate\([^)]*\)/,
+                `translate(${offset})`
+            );
+        } else {
+            // ➕ Chưa có translate → thêm vào, giữ nguyên phần khác
+            el.style.transform = `${currentTransform} translate(${offset})`.trim();
+        }
+    }
+
+
 }
 
 

@@ -56,8 +56,8 @@ idFooter.innerHTML = `
             <!-- Cột 1: Thông tin công ty -->
             <div class="footer-col company-info">
                 <a href="#" class="logo" style="display:block; margin-bottom:15px;">SX<span>TV</span></a>
-                <p>Cơ quan chủ quản: Hệ sinh thái Sói Xám Studio .</p>
-                <p>Địa chỉ: Hà Nội, Việt Nam.</p>
+                <p>Cơ quan chủ quản: Hệ sinh thái Sói Xám Studio</p>
+                <p>Địa chỉ: Hà Nội, Việt Nam</p>
 
                 <div class="social-links">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -83,7 +83,8 @@ idFooter.innerHTML = `
                     <li><a href="https://vnepg.site/">VNEPG - EPG Việt Nam</a></li>
                     <li><a href="https:fptplay.vn">FPTPlay</a></li>
                     <li><a href="https://mytv.com.vn/">MyTV</a></li>
-                    <li><a href="https://tv360.vn">TV360</a></li>
+                    <li><a href="https://tv360.vn">TV360</a></li> 
+                    <li><a href="https://vtvgo.vn">VTVGo</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -157,6 +158,10 @@ const menu = [
     {
         name: "FPTPlay",
         link: "/fpt"
+    },
+    {
+        name: "VTVgo",
+        link: "/vtvgo"
     }
 ]
 

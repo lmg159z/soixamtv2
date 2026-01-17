@@ -19,16 +19,16 @@ async function schedules(channel) {
         const now = Date.now();
 
         if (i.stopMs < now) {
-            return `
-            <div class="schedule-item past">
-                <div class="item-time">${toHHMM(i.startMs)}</div>
-                <div class="item-content">
-                    <div class="program-name">${i.title}</div>
-                </div>
-                <div class="item-action-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-                </div>
-            </div>`; // đã qua thời gian phát
+            // return `
+            // <div class="schedule-item past">
+            //     <div class="item-time">${toHHMM(i.startMs)}</div>
+            //     <div class="item-content">
+            //         <div class="program-name">${i.title}</div>
+            //     </div>
+            //     <div class="item-action-icon">
+            //         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"></path><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+            //     </div>
+            // </div>`; // đã qua thời gian phát
         }
         else if (i.startMs <= now && now < i.stopMs) {
             return `

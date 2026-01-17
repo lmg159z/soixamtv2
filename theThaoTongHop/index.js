@@ -1,6 +1,6 @@
 async function list(
     type = 1,
-    url = "https://onplus.com.vn/_next/data/j42WhsACa0rWDB-93l-DI/index.json"
+    url = "https://onplus.com.vn/_next/data/kEUCga5mXHIUbhk4wZPyG/index.json"
 ) {
     const API = await getAPI(
         `https://re.ghiminh1.workers.dev/?url=${encodeURIComponent(url)}`

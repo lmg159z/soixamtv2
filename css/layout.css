@@ -354,14 +354,14 @@ footer {
   right: -2%;
 
   /* KÍCH THƯỚC LOGO */
-  width: 25%;
+  width: 20%;
   height: auto;
   aspect-ratio: 4 / 1; /* auto scaling, đổi theo logo của bạn */
   background-image: url("/media/logo/SXTV.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-
+ opacity: .5;
   /* KHÔNG ẢNH HƯỞNG CLICK */
   pointer-events: none;
   user-select: none;
@@ -369,30 +369,53 @@ footer {
   /* z-index: 999; */
 
 }
-
-
-
-
-
-
-
-/* Khi fullscreen (trình duyệt tự thêm pseudo-class) */
-/* :fullscreen .yt-watermark,
-:-webkit-full-screen .yt-watermark {
-  top: 20px;
-  right: 20px;
-  transform: scale(1.15); 
-} */
-
-
-
-/* khung video */
+/* Khung chứa tổng */
 #tv-show__live {
     background: #000;
     position: relative;
     border-radius: 14px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Quan trọng: Fix video luôn nằm gọn trong khung */
+#myVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỉ lệ video, tạo dải đen nếu màn hình quá dài */
+}
+
+/* WATERMARK - Cấu hình lại hoàn toàn */
+.yt-watermark {
+    position: absolute;
+    
+    /* Tạo một khung ảo 16:9 nằm giữa màn hình */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    
+    /* Khung này sẽ có kích thước bằng hệt với vùng hiển thị video */
+    width: 100%;
+    height: 100%;
+    max-width: calc(100vh * 16 / 9); 
+    max-height: calc(100vw * 9 / 16);
+
+    /* Đưa logo vào góc dưới bên phải của KHUNG ẢO này */
+    background-image: url("/media/logo/SXTV.png");
+    background-size: 12%; /* Kích thước logo tính theo % chiều rộng video */
+    background-position: 97% 90%; /* Cách phải 3%, cách dưới 10% */
+    background-repeat: no-repeat;
+    
+    opacity: 0.8;
+    pointer-events: none;
+    user-select: none;
+    
+    /* Z-index cực cao để không bị Shaka UI đè */
+    z-index: 1; 
+}
+
 
 /* container gốc của Shaka */
 .shaka-video-container {
@@ -413,9 +436,26 @@ footer {
 
 /* nút play/pause */
 .shaka-play-pause-button .material-icons {
-    font-size: 32px !important;
+    font-size: 20px !important;
+    padding: calc(10% / 2) !important;
 }
-
+.shaka-play-button {
+    box-sizing: border-box;
+    padding: calc(10% / 2);
+    width: 0;
+    height: 0;
+    margin: 0;
+    border-radius: 50%;
+    box-shadow: rgba(0 0 0 / 10%) 0 0 20px 0;
+    border: none;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(255 255 255 / 90%);
+    opacity: 0;
+    transition: opacity cubic-bezier(.4, 0, .6, 1) .6s;
+     background: #ff3b3b !important;
+}
 /* tua 10s */
 .shaka-rewind-button .material-icons,
 .shaka-fast-forward-button .material-icons {

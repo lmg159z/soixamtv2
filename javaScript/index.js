@@ -171,3 +171,41 @@ function safeAtob(str) {
     return null;
   }
 }
+
+
+
+function buildProxyLink(input) {
+    try {
+        const u = new URL(input);
+
+        // Lấy base proxy
+        const proxyOrigin = u.origin;
+
+        // Lấy toàn bộ query
+        const params = new URLSearchParams(u.search);
+
+        // Lấy url gốc
+        let innerUrl = params.get("url");
+        if (!innerUrl) return null;
+
+        // ❗ Remove url param
+        params.delete("url");
+
+        // ❗ Nếu còn param => gắn ngược lại vào innerUrl
+        const restQuery = params.toString();
+        if (restQuery) {
+            innerUrl += (innerUrl.includes("?") ? "&" : "?") + restQuery;
+        }
+
+        // Decode nếu đã encode
+        innerUrl = decodeURIComponent(innerUrl);
+
+        // Encode lại đúng 1 lần
+        const encoded = encodeURIComponent(innerUrl);
+
+        return `${proxyOrigin}/?url=${encoded}`;
+    } catch (e) {
+        console.error("Invalid URL", e);
+        return null;
+    }
+}
