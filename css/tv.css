@@ -76,6 +76,7 @@
 .channel-name {
     font-size: 18px;
     font-weight: 700;
+    
 }
 
 .date-selector-wrapper {
@@ -431,14 +432,14 @@
 }
 
 .channel-name {
-    margin-top: 8px;
+     margin-top: 8px;
     font-size: 14px;
     font-weight: 500;
     color: #e0e0e0;
-    white-space: nowrap;
+  
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Cắt chữ nếu tên quá dài */
+
 }
 
 /* Media Query cho màn hình điện thoại */

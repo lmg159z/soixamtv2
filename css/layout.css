@@ -439,23 +439,7 @@ footer {
     font-size: 20px !important;
     padding: calc(10% / 2) !important;
 }
-.shaka-play-button {
-    box-sizing: border-box;
-    padding: calc(10% / 2);
-    width: 0;
-    height: 0;
-    margin: 0;
-    border-radius: 50%;
-    box-shadow: rgba(0 0 0 / 10%) 0 0 20px 0;
-    border: none;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-color: rgba(255 255 255 / 90%);
-    opacity: 0;
-    transition: opacity cubic-bezier(.4, 0, .6, 1) .6s;
-     background: #ff3b3b !important;
-}
+
 /* tua 10s */
 .shaka-rewind-button .material-icons,
 .shaka-fast-forward-button .material-icons {
