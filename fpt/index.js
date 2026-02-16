@@ -26,7 +26,7 @@ function createChannel(channel) {
     // 👉 thẻ a + href theo id JSON
     const link = document.createElement("a");
     link.className = "video-link";
-    link.href = `/index.html?channel=${channel.id}`;
+    link.href = `/ch/index.html?channel=${channel.id}`;
     link.target = "_self"; // hoặc _blank nếu bạn muốn
 
     const video = document.createElement("video");

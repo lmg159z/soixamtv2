@@ -209,3 +209,11 @@ function buildProxyLink(input) {
         return null;
     }
 }
+
+function formatBroadcastTime(input) {
+  if(!input) return "";
+  const [datePart, timePart] = input.split("-");
+  const [day, month] = datePart.split(":"); 
+  const [hour, minute] = timePart.split(":");
+  return `Phát sóng lúc ${hour}h${minute} ngày ${day}/${month}`;
+}

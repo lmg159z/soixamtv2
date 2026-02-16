@@ -1,0 +1,418 @@
+  * {
+      text-align: left;
+  }
+
+  .container {
+      max-width: 1600px;
+      margin: 0 auto;
+  }
+
+  .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #e5e5e5;
+      text-transform: uppercase;
+  }
+
+  /* --- Grid System (PC mặc định) --- */
+  .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      /* 5 cột trên màn hình lớn */
+      gap: 20px 15px;
+      /* Khoảng cách hàng và cột */
+      margin-bottom: 30px;
+  }
+
+  .grid-layout-horizontal {
+      display: grid;
+      /* KHÁC BIỆT 1: Chuyển hướng xếp phần tử sang chiều ngang (cột) thay vì hàng */
+      grid-auto-flow: column;
+
+      /* KHÁC BIỆT 2: Định nghĩa độ rộng cho từng phần tử con. 
+       - 85% để user thấy mép phần tử tiếp theo (gợi ý cuộn) trên mobile.
+       - Hoặc dùng px cố định (ví dụ: 250px) */
+      grid-auto-columns: minmax(250px, 1fr);
+
+      /* Khoảng cách giữa các cột */
+      gap: 15px;
+
+      /* KHÁC BIỆT 3: Cho phép cuộn ngang và ẩn cuộn dọc */
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      /* Tùy chọn: Giúp cuộn mượt hơn trên iOS/Mobile */
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+
+      /* Margin tương tự code cũ */
+      margin-bottom: 30px;
+
+      /* Tùy chọn: Ẩn thanh scrollbar xấu xí nếu muốn giao diện sạch */
+      scrollbar-width: none;
+      /* Firefox */
+  }
+
+  /* Ẩn thanh scrollbar cho Chrome/Safari/Edge */
+  .grid-layout-horizontal::-webkit-scrollbar {
+      display: none;
+  }
+
+
+  /* --- Card Item Style --- */
+  .video-card {
+      background-color: transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .video-card:hover .thumb-img {
+      transform: scale(1.05);
+      /* Hiệu ứng zoom nhẹ khi di chuột */
+  }
+
+  /* --- Thumbnail Area --- */
+  .thumb-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      /* Tỉ lệ khung hình 16:9 */
+      overflow: hidden;
+      border-radius: 4px;
+      background-color: #1a1a1a;
+  }
+
+  .thumb-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+  }
+
+  /* Overlay text bên trong ảnh (VD: Thời gian đếm ngược) */
+  .overlay-status {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 8px 10px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+      font-size: 12px;
+      color: #cccccc;
+      font-weight: 500;
+  }
+
+  /* Badge LIVE (nếu đang phát) */
+  .badge-live {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 2px;
+      text-transform: uppercase;
+  }
+
+  .badge-channel-name {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 2px;
+      text-transform: uppercase;
+  }
+
+  /* --- Meta Info (Text bên dưới) --- */
+  .card-info {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #f1f1f1;
+  }
+
+  .time-slot {
+      font-weight: bold;
+      margin-right: 5px;
+  }
+
+  .separator {
+      margin: 0 5px;
+      color: #666;
+  }
+
+  .program-name {
+      font-weight: 400;
+      color: #e0e0e0;
+      /* Cắt chữ nếu quá dài (2 dòng) */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+
+  /* --- RESPONSIVE MEDIA QUERIES --- */
+
+  /* Laptop nhỏ / Tablet nằm ngang (Dưới 1200px) -> 4 cột */
+  @media (max-width: 1200px) {
+      .grid-layout {
+          grid-template-columns: repeat(4, 1fr);
+      }
+  }
+
+  /* Tablet dọc (Dưới 900px) -> 3 cột */
+  @media (max-width: 900px) {
+      .grid-layout {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+
+  /* Mobile lớn (Dưới 600px) -> 2 cột */
+  @media (max-width: 600px) {
+      body {
+          padding: 0px;
+          /* Giảm padding body */
+      }
+
+      .grid-layout {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px 10px;
+      }
+
+      .section-title {
+          font-size: 18px;
+      }
+
+      .card-info {
+          font-size: 13px;
+          /* Chữ nhỏ hơn trên mobile */
+      }
+  }
+
+  /* Mobile rất nhỏ (Dưới 350px) -> 1 cột */
+  @media (max-width: 350px) {
+      .grid-layout {
+          grid-template-columns: 1fr;
+      }
+  }
+
+
+
+
+  /* 1. Tạo hiệu ứng xoay (Spinner) */
+  .loader {
+      border: 4px solid #f3f3f3;
+      /* Màu nền vòng tròn */
+      border-top: 4px solid #3498db;
+      /* Màu xoay (Xanh dương) */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+  }
+
+  /* Định nghĩa chuyển động xoay */
+  @keyframes spin {
+      0% {
+          transform: rotate(0deg);
+      }
+
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+
+  /* 2. Class để căn giữa màn hình hoặc khung chứa */
+  .loading-wrapper {
+      display: flex;
+      justify-content: center;
+      /* Căn giữa ngang */
+      align-items: center;
+      /* Căn giữa dọc */
+      width: 100%;
+      min-height: 300px;
+      /* Chiều cao tối thiểu để không bị bẹp */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* =================================== */
+
+/* --- Match Card Style (Bổ sung cho HTML mới) --- */
+
+/* Đảm bảo thẻ a bao quanh full chiều cao cột trong grid */
+.grid-layout a, 
+.grid-layout-horizontal a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.match-card {
+    background-color: #1a1a1a; /* Cùng tông màu nền với thumb-wrapper cũ */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Để các card cao bằng nhau */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng Hover tương tự .video-card */
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border-color: #555;
+    background-color: #252525;
+}
+
+/* --- Header: Thời gian & Giải đấu --- */
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #999;
+}
+
+.match-header .time {
+    color: #e5e5e5;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.match-header .league {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+/* --- Teams Area: Đội bóng & VS --- */
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%; /* Chiếm 35% mỗi bên */
+    text-align: center;
+}
+
+.team img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain; /* Giữ tỉ lệ logo không bị méo */
+    margin-bottom: 8px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.team div {
+    font-size: 13px;
+    color: #f1f1f1;
+    font-weight: 500;
+    line-height: 1.2;
+    /* Giới hạn tên đội 2 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.vs {
+    font-size: 18px;
+    font-weight: 900;
+    color: #666;
+    font-style: italic;
+}
+
+/* --- Footer: Trạng thái LIVE/UN LIVE --- */
+.match-footer {
+    text-align: center;
+    margin-top: auto; /* Đẩy xuống đáy nếu card dài */
+}
+
+.match-footer div {
+    font-size: .56em;
+}
+
+/* Trạng thái chung */
+.status, .statusLive {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Chưa đá hoặc đã hết */
+.status {
+    background-color: #333;
+    color: #888;
+    border: 1px solid #444;
+}
+
+/* Đang LIVE */
+.statusLive {
+    background-color:  var(--accent-color); /* Màu đỏ nổi bật */
+    color: white;
+    box-shadow: 0 0 8px rgba(204, 0, 0, 0.6);
+    animation: blinkLive 2s infinite; /* Hiệu ứng nhấp nháy nhẹ */
+}
+
+@keyframes blinkLive {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* --- Xử lý thẻ a bị disable (Logic từ JS của bạn) --- */
+/* JS của bạn có: pointer-events: none; color: gray; */
+/* CSS bổ trợ để nhìn nó "chìm" hẳn đi */
+a[style*="pointer-events: none"] .match-card {
+    opacity: 0.6;
+    filter: grayscale(100%);
+    background-color: #111;
+    cursor: not-allowed;
+}

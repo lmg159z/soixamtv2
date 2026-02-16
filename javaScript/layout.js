@@ -30,20 +30,6 @@ idHeader.innerHTML = `
                 <li><a href="#">Kho phim VIP</a></li> -->
             </ul>
         </div>
-
-        <div class="header-right">
-            <!-- Search Box (Desktop) -->
-            <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm...">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-
-            <!-- Icon Search (Mobile) -->
-            <div class="mobile-search-icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-
-            <!-- Chú ý: Ẩn chữ 'Đăng nhập' trên mobile để đỡ chật, chỉ hiện icon -->
         </div>
    
 `
@@ -144,6 +130,10 @@ const menu = [
         link: "/"
     },
     {
+        name: "Truyền hình",
+        link: "/ch"
+    },
+    {
         name: "Esport",
         link: "/esports"
     },
@@ -184,6 +174,176 @@ idMenu.innerHTML = dataHTML.join("")
 
 
 
+window.TetCinematicEffect = (function () {
+  let canvas, ctx, raf;
+  let particles = [];
+  let flowers = [];
+  let running = false;
+  let lastFirework = 0;
+
+  /* ======================
+     FIREWORK PARTICLE
+  ====================== */
+  class Particle {
+    constructor(x, y, vx, vy, color, life) {
+      this.x = x;
+      this.y = y;
+      this.vx = vx;
+      this.vy = vy;
+      this.life = life;
+      this.alpha = 1;
+      this.color = color;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vy += 0.015; // gravity nhẹ
+      this.life--;
+      this.alpha = Math.max(this.life / 80, 0);
+    }
+    draw() {
+      ctx.globalAlpha = this.alpha;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function launchFirework() {
+    const x = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
+    const y = Math.random() * canvas.height * 0.4 + 50;
+    const hue = 30 + Math.random() * 30;
+    const color = `hsl(${hue},100%,60%)`;
+
+    for (let i = 0; i < 90; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = Math.random() * 3 + 1.2;
+      particles.push(
+        new Particle(
+          x,
+          y,
+          Math.cos(a) * s,
+          Math.sin(a) * s,
+          color,
+          80 + Math.random() * 20
+        )
+      );
+    }
+  }
+
+  /* ======================
+     FLOWERS
+  ====================== */
+  function injectFlowerStyle() {
+    if (document.getElementById("tet-cine-style")) return;
+    const style = document.createElement("style");
+    style.id = "tet-cine-style";
+    style.textContent = `
+      .tet-cine-flower {
+        position: fixed;
+        top: -60px;
+        width: 28px;
+        height: 28px;
+        background: url("https://i.imgur.com/JYUB0m3.png") center/contain no-repeat;
+        pointer-events: none;
+        opacity: .85;
+        filter: drop-shadow(0 4px 10px rgba(255,200,80,.45));
+        animation: tet-cine-fall linear forwards;
+      }
+      @keyframes tet-cine-fall {
+        to { transform: translateY(110vh); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function spawnFlower() {
+    if (flowers.length > 16) return;
+    const f = document.createElement("div");
+    f.className = "tet-cine-flower";
+
+    const dur = 14000 + Math.random() * 6000;
+    const sway = Math.random() * 60 - 30;
+
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.animationDuration = dur + "ms";
+    f.style.transform = `translateX(${sway}px) scale(${0.7 + Math.random() * 0.4})`;
+    f.style.zIndex = 999995;
+
+    document.body.appendChild(f);
+    flowers.push(f);
+
+    setTimeout(() => {
+      f.remove();
+      flowers = flowers.filter(x => x !== f);
+    }, dur);
+  }
+
+  /* ======================
+     RENDER LOOP
+  ====================== */
+  function render(ts) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles = particles.filter(p => p.life > 0);
+
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    if (ts - lastFirework > 1800) {
+      launchFirework();
+      lastFirework = ts;
+    }
+
+    raf = requestAnimationFrame(render);
+  }
+
+  /* ======================
+     API
+  ====================== */
+  function start() {
+    if (running) return;
+    running = true;
+
+    canvas = document.createElement("canvas");
+    canvas.style.cssText = `
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:999990;
+    `;
+    document.body.appendChild(canvas);
+    ctx = canvas.getContext("2d");
+
+    const resize = () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    };
+    resize();
+    addEventListener("resize", resize);
+
+    injectFlowerStyle();
+
+    render(0);
+    setInterval(spawnFlower, 1200);
+  }
+
+  function stop() {
+    running = false;
+    cancelAnimationFrame(raf);
+
+    particles = [];
+    flowers.forEach(f => f.remove());
+    flowers = [];
+
+    if (canvas) canvas.remove();
+  }
+
+  return { start, stop };
+})();
 
 
-// ===========================
+ TetCinematicEffect.start();
