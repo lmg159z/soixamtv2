@@ -51,6 +51,7 @@
 
       /* Tùy chọn: Ẩn thanh scrollbar xấu xí nếu muốn giao diện sạch */
       scrollbar-width: none;
+      
       /* Firefox */
   }
 
@@ -415,4 +416,11 @@ a[style*="pointer-events: none"] .match-card {
     filter: grayscale(100%);
     background-color: #111;
     cursor: not-allowed;
+}
+
+
+
+.footer-bottom p {
+    align-items: center;
+    text-align: center;
 }

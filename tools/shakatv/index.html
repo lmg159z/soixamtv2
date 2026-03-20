@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Config Output</title>
+    
+    <!-- 1. Import Link CSS theo yêu cầu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/controls.css">
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/tv.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="glass-container">
+        <h2><i class="fa-solid fa-gear"></i> Stream Configuration</h2>
+
+        <!-- Box chứa video (Giữ nguyên cấu trúc bạn yêu cầu) -->
+        <div id="tv-show__live" data-shaka-player-container>
+            <video id="myVideo" data-shaka-player style="width:100%; height:100%;"></video>
+            <div class="yt-watermark"></div>
+        </div>
+
+        <!-- Form nhập liệu -->
+        <form id="configForm">
+            <div class="input-grid">
+                <!-- URL -->
+                <div class="form-group full-width">
+                    <label>Stream URL</label>
+                    <input type="text" id="inpUrl" placeholder="https://example.com/manifest.mpd">
+                </div>
+
+                <!-- Referer & Origin -->
+                <div class="form-group">
+                    <label>Referer</label>
+                    <input type="text" id="inpReferer" placeholder="https://example.com">
+                </div>
+                <div class="form-group">
+                    <label>Origin</label>
+                    <input type="text" id="inpOrigin" placeholder="https://example.com">
+                </div>
+
+                <!-- Key ID & Key -->
+                <div class="form-group">
+                    <label>Key ID</label>
+                    <input type="text" id="inpKeyId" placeholder="UUID Key ID">
+                </div>
+                <div class="form-group">
+                    <label>Key</label>
+                    <input type="text" id="inpKey" placeholder="Key Value">
+                </div>
+                <div class="form-group full-width">
+                    <label>License URL</label>
+                    <input type="text" id="inpLicense" placeholder="https://example.com/">
+                </div>
+            </div>
+
+            <button type="submit" id="btnSubmit">GET DATA <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+    </div>
+
+    <!-- Script xử lý lấy dữ liệu -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.compiled.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.ui.js"></script>
+    <script src="/javaScript/index.js" ></script>
+    <script src="/javaScript/tv.js" ></script>
+    <script src="./index.js"></script>
+</body>
+</html>

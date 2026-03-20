@@ -1,8 +1,9 @@
 async function onlive(id) {
-    const API = await getAPI(`https://onlive.ghiminh1.workers.dev/?id=${id}`)
+    const API = await getAPI(`https://andanh.site/onlive.php?id=${id}`)
+    console.log(API)
     // const APIurl = await getAPI(`https://re.ghiminh1.workers.dev/?url=https://livestream-manager.onlive.vn/broad_stream_assign.html?return_type=gcp_cdn&use_cors=true&cors_origin_url=play.onlive.vn&broad_key=121141-common-original-hls`)
-    const APIurl = await getAPI(buildProxyLink(`https://re.ghiminh1.workers.dev/?url=https://livestream-manager.onlive.vn/broad_stream_assign.html?return_type=gcp_cdn&use_cors=true&cors_origin_url=play.onlive.vn&broad_key=121141-common-original-hls`))
-    console.log(APIurl)
+    // const APIurl = await getAPI(buildProxyLink(`https://re.ghiminh1.workers.dev/?url=https://livestream-manager.onlive.vn/broad_stream_assign.html?return_type=gcp_cdn&broad_key=122477-common-original-hls`))
+    const APIurl = await getAPI(`https://andanh.site/get.php?r=2&url=https%3A%2F%2Fvietanhtv.id.vn%2Fonlive%2Fgetlive.php%3Fid%3D${id}%26broad_no%3D${API?.data.broad_no}`)
     if (API.result === 1) {
         const title = document.getElementById("onlive-title")
         const titleHTML = `
@@ -10,7 +11,7 @@ async function onlive(id) {
     `
         title.innerHTML = titleHTML
         loadPlayer({
-            url: `${APIurl.view_url}?aid=${API?.data.hls_authentication_key}`,
+            url: `${APIurl.url2}`,
             drm: false,
             kid: '',
             key: '',
@@ -29,3 +30,6 @@ if (getQueryParam("id") === null) {
 else {
     onlive(getQueryParam("id"))
 }
+
+
+// https://andanh.site/get.php?r=2&url=https%3A%2F%2Fvietanhtv.id.vn%2Fonlive%2Fgetlive.php%3Fid%3Dlienquan

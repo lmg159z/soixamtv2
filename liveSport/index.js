@@ -3,8 +3,8 @@
     const APIsport = await getAPI("https://soixamapi.vercel.app/api/sports");
     const sportsHTML = APIsport.data.map(i => {
         return `
-              <a href="/liveSport/index.html?id=${i.id}"
-                 style="${i.stream_link ? '' : 'pointer-events: none; color: gray;'}"
+            <a href="/liveSport/index.html?id=${i.id}"
+                 style="${i.status != 3  ? '':'display:none;'}"
               >
                 <div class="match-card">
                   <div class="match-header">
@@ -12,7 +12,7 @@
                   </div>
                   <div class="teams">
                     <div class="team">
-                      <img src="${i.home_team?.logo || "https://robong.net/images/avatar-blank.jpg"}" alt="">
+                      <img src="${i.home_team?.logo  || "https://robong.net/images/avatar-blank.jpg" }" alt="">
                       <div>${i.home_team?.name || ""}</div>
                     </div>
                     <div class="vs">VS</div>
@@ -22,8 +22,8 @@
                     </div>
                   </div>
                   <div class="match-footer">
-                    <div class="${i.stream_link ? "statusLive" : "status"}">
-                      ${i.stream_link ? "LIVE" : formatBroadcastTime(i.match_time)}
+                    <div class="${ i.status === 2 ? "statusLive" : "status"}">
+                     ${i.status === 2 ? "LIVE" : formatBroadcastTime(i.match_time)} 
                     </div>
                   </div>
                 </div>
@@ -45,7 +45,7 @@ async function getURLPlay(id) {
     // hoặc chỉ cần kiểm tra kết quả trả về.
     let API = null;
     try {
-        API = await getAPI(`https://soixamapi.vercel.app/api/sports?id=${id}`);
+        API = await getAPI(`https://sports.ghiminh1.workers.dev?id=${id}`);
     } catch (e) {
         console.log("Lỗi khi gọi API:", e);
     }

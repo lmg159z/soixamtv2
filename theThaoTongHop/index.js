@@ -1,101 +1,151 @@
-async function list(
-    type = 1,
-    url = "https://onplus.com.vn/_next/data/kEUCga5mXHIUbhk4wZPyG/index.json"
-) {
-    const API = await getAPI(
-        `https://re.ghiminh1.workers.dev/?url=${encodeURIComponent(url)}`
-    );
-    if (!API) return;
 
+async function sports(type = 1, slug) {
     const esport = document.getElementById("esport-content");
-    if (!esport) return;
-
-    /* ===== ID cần loại bỏ ===== */
-    const EXCLUDE_IDS = new Set([95, 315, 208, 121, 209, 153, 211]);
-
-    /* ===== Trường hợp categories ===== */
-    if (type === 1 && Array.isArray(API?.pageProps?.screenblocks)) {
+    const API = await getAPI("./slug.json")
+    console.log(API)
+    if (type === 1) {
         HeaderTitle.set({
             icon: "",
             title: "Thể thao tổng hợp",
             suffix: ""
         });
-        esport.innerHTML = API.pageProps.screenblocks
-            .filter(cat =>
-                cat.events &&
-                !EXCLUDE_IDS.has(cat.id)
-            )
-            .map(cat => `
-                <a href="/theThaoTongHop/index.html?slug=${cat.id}">
-                    <h2 class="section-header">${cat.name}</h2>
-                </a>
-
-                <div class="video-grid">
-                    ${cat.events.map(renderVideoCard).join("")}
-                </div>
-            `)
-            .join("");
-
-        return;
-    }
-    if (type === 2 && API?.data) {
-        HeaderTitle.set({
-            icon: "",
-            title: API.block?.name,
-            suffix: ""
-        });
-        esport.innerHTML = `
-            <h2 class="section-header">${API.block?.name ?? ""}</h2>
-            <div class="video-grid is-default">
-                ${API.data.map(renderVideoCard).join("")}
+        // ===========================
+        const listHTML = await Promise.all(
+            API.slug.map(async (i) => {
+                const dataSlug = await getAPI(`https://tv-web.api.vinasports.com.vn/api/v2/publish/see-more/events/${i.id}/?page_num=1&page_size=15`)
+                return `
+            <a href="/theThaoTongHop/index.html?slug=${i.id}">
+                 <h2 class="section-header">${i.name}</h2>
+            </a>
+                 <div class="grid-layout-horizontal ">
+                ${renderHTML(dataSlug.data)}
             </div>
         `;
+            })
+        );
+        esport.innerHTML = listHTML.join("");
     }
-}
-
-function renderVideoCard(item) {
-    if (item.is_protected) return "";
-
-    let st = "";
-
-    switch (item.status) {
-        case "live":
-            st = "TRỰC TIẾP";
-            break;
-
-        case "not_started":
-            st = formatDateTime(item.start_time);
-            break;
-
-        default:
-            st = toMMSS(item.duration);
-    }
-
-    const isLive = item.status === "live";
-
-    return `
-        <a href="/stream/index.html?id=${item.id}&type=${item.type}">
-            <div class="video-card">
-                <div class="thumbnail-wrapper">
-                    <img 
-                        src="${item.thumbnail_horizontal}"
-                        alt="${item.name}"
-                        class="thumbnail-img"
-                        onerror="this.src='/img/no-thumb.jpg'"
-                    >
-                    <span class="timestamp" ${isLive ? "style='background-color:red'" : ""}>
-                        ${st}
-                    </span>
-                    <div class="play-overlay"></div>
-                </div>
-
-                <div class="video-info">
-                    <h3 class="video-title">${item.name}</h3>
-                </div>
+    if (type === 2) {
+        HeaderTitle.set({
+            icon: "",
+            title: "Thể thao tổng hợp",
+            suffix: ""
+        });
+        // ===========================
+        const dataSlug = await getAPI(`https://tv-web.api.vinasports.com.vn/api/v2/publish/see-more/events/${slug}/?page_num=1&page_size=15`)
+        console.log(dataSlug)
+        const listHTML = `
+            <h2 class="section-header">${dataSlug.block.name}</h2>
+            <div class="grid-layout">
+                ${renderHTML(dataSlug.data)}
             </div>
-        </a>
-    `;
+        `
+        esport.innerHTML = listHTML
+    }
+
 }
+
+
+
+
+function renderHTML(data) {
+    function encodeObj(obj) {
+        const json = JSON.stringify(obj);
+
+        const utf8Bytes = new TextEncoder().encode(json);
+        let binary = "";
+        utf8Bytes.forEach(b => binary += String.fromCharCode(b));
+
+        return btoa(binary)
+            .replace(/\+/g, "-")
+            .replace(/\//g, "_")
+            .replace(/=+$/, "");
+    }
+
+    const list = data.map(i => {
+
+
+        const base64 = encodeObj({
+            id: i.id,
+            name: i.name,
+            duration: i.duration,
+            created: i.created,
+            url: "https://livevlive.vtvcab.vn/hls/vod/newonsports/DISTRIBUTE/"
+                + i.url + "/index.m3u8"
+        });
+        return `
+    <a href="./stream/index.html?id=${base64}">
+                    <div class="video-card">
+                        <div class="thumb-wrapper">
+                            <img src="${i.thumbnail_horizontal}" alt="${i.id}" class="thumb-img" loading="lazy">
+                            <div class="video-time" >
+                                ${toMMSS(i.duration)}
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="time-slot">${i.name}</span>
+                        </div>
+                    </div> 
+                </a>`;
+
+    })
+
+    return list.join("")
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// function renderVideoCard(item) {
+//     if (item.is_protected) return "";
+
+//     let st = "";
+
+//     switch (item.status) {
+//         case "live":
+//             st = "TRỰC TIẾP";
+//             break;
+
+//         case "not_started":
+//             st = formatDateTime(item.start_time);
+//             break;
+
+//         default:
+//             st = toMMSS(item.duration);
+//     }
+
+//     const isLive = item.status === "live";
+
+//     return `
+//         <a href="/stream/index.html?id=$${i.id}&type=$${i.type}">
+//             <div class="video-card">
+//                 <div class="thumbnail-wrapper">
+//                     <img 
+//                         src="$${i.thumbnail_horizontal}"
+//                         alt="$${i.name}"
+//                         class="thumbnail-img"
+//                     >
+//                     <span class="timestamp" ${isLive ? "style='background-color:red'" : ""}>
+//                         ${st}
+//                     </span>
+//                     <div class="play-overlay"></div>
+//                 </div>
+
+//                 <div class="video-info">
+//                     <h3 class="video-title">$${i.name}</h3>
+//                 </div>
+//             </div>
+//         </a>
+//     `;
+// }
 
 
 function formatDateTime(isoString) {
@@ -110,11 +160,11 @@ function formatDateTime(isoString) {
     return `${HH}:${MM}-${DD}/${MMth}/${YYYY}`;
 }
 if (getQueryParam("slug") === null) {
-    list()
+    sports(1, "")
 }
 else {
     // list(`https://onplus.com.vn/_next/data/Zunl1uQ23SPeKMVfPQPaM/danh-muc/${getQueryParam("slug")}.json?slug=${getQueryParam("slug")}`)
-    list(2, `https://tv-web.api.vinasports.com.vn/api/v2/publish/see-more/events/${getQueryParam("slug")}`)
+    sports(2, getQueryParam("slug"))
 }
 
 

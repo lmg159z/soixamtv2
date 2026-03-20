@@ -12,8 +12,10 @@
     try {
         // Gọi API (Lúc này màn hình đang quay vòng tròn)
         const API = await getAPI("https://soixamapi.vercel.app/api/broadcastProgram");
-        const APIsport = await getAPI("https://soixamapi.vercel.app/api/sports");
-        
+        // const API = await getAPI("http://localhost:3000/api/broadcastProgram")
+        // const APIsport = await getAPI("https://sv.hoiquantv.xyz/api/v1/external/fixtures/finished");
+        // console.log(APIsport)
+
         // --- Code xử lý cũ đã tối ưu ---
         const liveThumB = API.liveThumB;
         // Thuật toán xáo trộn nhanh (Fisher-Yates)
@@ -54,45 +56,57 @@
                 </a>`;
             }).join("");
 
-        const sportsHTML = APIsport.data.map( i => {
-             return `
-              <a href="/liveSport/index.html?id=${i.id}"
-                 style="${i.stream_link ? '':'pointer-events: none; color: gray;'}"
-              >
-                <div class="match-card">
-                  <div class="match-header">
-                    <div class="league">${i.league?.name || ""}</div>
-                  </div>
-                  <div class="teams">
-                    <div class="team">
-                      <img src="${i.home_team?.logo  || "https://robong.net/images/avatar-blank.jpg" }" alt="">
-                      <div>${i.home_team?.name || ""}</div>
-                    </div>
-                    <div class="vs">VS</div>
-                    <div class="team">
-                      <img src="${i.away_team?.logo || 'https://robong.net/images/avatar-blank.jpg'}" alt="">
-                      <div>${i.away_team?.name || ""}</div>
-                    </div>
-                  </div>
-                  <div class="match-footer">
-                    <div class="${i.stream_link ? "statusLive" : "status"}">
-                      ${i.stream_link ? "LIVE" : formatBroadcastTime(i.match_time)}
-                    </div>
-                  </div>
-                </div>
-              </a>
-            `
-        }).join("")
+        // const sportsHTML = APIsport.data.map(i => {
+        //     return `
+        //        <a href="/liveSport/index.html?id=${i.id}"
+        //             style="${i.isPinned ? '' : 'display:none;'}">
 
+        //             <div class="match-card">
+        //                 <div class="match-header">
+        //                 <div class="league">${i.league?.name || ""}</div>
+        //                 </div>
+        //                 <div class="teams">
+        //                 <div class="team">
+        //                     <img 
+        //                     src="${i.homeTeam?.logoUrl || 'https://robong.net/images/avatar-blank.jpg'}"
+        //                     alt=""
+        //                     loading="lazy"
+        //                     decoding="async"
+        //                     width="40"
+        //                     height="40"
+        //                     >
+        //                     <div>${i.homeTeam?.name || ""}</div>
+        //                 </div>
+        //                 <div class="vs">VS</div>
+        //                 <div class="team">
+        //                     <img 
+        //                     src="${i.awayTeam?.logoUrl || 'https://robong.net/images/avatar-blank.jpg'}"
+        //                     alt=""
+        //                     loading="lazy"
+        //                     decoding="async"
+        //                     width="40"
+        //                     height="40"
+        //                     >
+        //                     <div>${i.awayTeam?.name || ""}</div>
+        //                 </div>
+        //                 </div>
+        //                 <div class="match-footer">
+        //                 <div class="${i.isPinned ? 'statusLive' : 'status'}">
+        //                     ${i.isPinned ? "LIVE" : ""} 
+        //                 </div>
+        //                 </div>
+        //             </div>
+        //             </a>
+        //     `
+        // }).join("")
+        // ${ i.status === 2 ? "LIVE" : formatBroadcastTime(i.match_time)}
 
-                    // <div class="time">${formatBroadcastTime(i.match_time)}</div>
+        // <div class="time">${formatBroadcastTime(i.match_time)}</div>
         // --- Xóa Loading và Gán nội dung thật ---
         idHTML.innerHTML = `
             <h2 class="section-title">Kênh truyền hình tiêu biểu</h2>
             <div class="grid-layout-horizontal">${liveThumbHTML}</div>
             <h2 class="section-title">Thể thao tổng hợp</h2>
-            <div class="grid-layout-horizontal">${sportsHTML}</div>
-            <h2 class="section-title">Chương trình truyền hình</h2>
             <div class="grid-layout">${broadcastHTML}</div>
         `;
 

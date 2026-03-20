@@ -1,0 +1,533 @@
+{
+    "slug":[
+  {
+    "id": 3,
+    "name": "HOT🔥",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 239,
+    "name": "Tết này xem gì 🌸",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 199,
+    "name": "Liên Minh Huyền Thoại",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/a0c72d6d-3ce1-4735-bad1-1d5f3a79fc59.png"
+  },
+  {
+    "id": 195,
+    "name": "LCK Cup 2026",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 206,
+    "name": "Top Highlight",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 197,
+    "name": "LCK Warm-Up Series",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 201,
+    "name": "CHUNG KẾT THẾ GIỚI LIÊN MINH HUYỀN THOẠI 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 172,
+    "name": "EARN YOUR LEGACY",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 173,
+    "name": "BEHIND THE WORLDS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 111,
+    "name": "LCP FUN/FAIL MOMENTS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 104,
+    "name": "LCP BEST PLAYS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 166,
+    "name": "VÒNG THĂNG HẠNG LCP 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 183,
+    "name": "RED BULL LEAGUE OF ITS OWN 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 189,
+    "name": "VALORANT",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/f721296d-5c1b-4a27-bee9-2ec8cc48ead9.jpg"
+  },
+  {
+    "id": 204,
+    "name": "VCT PACIFIC KICKOFF 2026",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 169,
+    "name": "HỒ SƠ ESPORTS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 190,
+    "name": "CHUYỂN ĐỘNG VCT",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 194,
+    "name": "ON SIGHT - Phân tích chuyên sâu",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 191,
+    "name": "TỔNG HỢP THÚ VỊ - ON FIRE",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 187,
+    "name": "PROJECT BLENDER: PHASE 04",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 179,
+    "name": "TEN 2025 VALORANT GLOBAL INVITATIONAL",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 180,
+    "name": "RED BULL HOME GROUND 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 186,
+    "name": "BEST MOMENTS OF SVL 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 200,
+    "name": "Liên Quân Mobile",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/ad8e348d-7e4e-4456-b037-c8f4e6d26e6b.png"
+  },
+  {
+    "id": 203,
+    "name": "Seagames 33 - Liên Quân Mobile",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 202,
+    "name": "AIC 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 181,
+    "name": "ARENA OF VALOR WINTER 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 112,
+    "name": "MIC CHECK TUYỂN THỦ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 137,
+    "name": "CKTG: VƯƠNG MIỆN CHIẾN THUẬT - MÙA 15",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/53505e0d-0351-408e-8010-3edc27422ec8.jpg"
+  },
+  {
+    "id": 161,
+    "name": "CKTG VƯƠNG MIỆN CHIẾN THUẬT - MÙA 14",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 175,
+    "name": "CHUNG KẾT KHU VỰC APAC",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 132,
+    "name": "2025 PUBG MOBILE GLOBAL CHAMPIONSHIP",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/d024a0ce-aabc-42fe-8967-04888718d866.png"
+  },
+  {
+    "id": 133,
+    "name": "BEST OF WWCD ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 136,
+    "name": "HỒ SƠ CHIẾN ĐỘI",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 162,
+    "name": "BLAST BOUNTY SEASON 2",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 156,
+    "name": "BLAST RIVALS FALL 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/3f659c84-92dc-4416-be40-d316bbfafc8a.png"
+  },
+  {
+    "id": 159,
+    "name": "LEGENDS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 168,
+    "name": "HÀNH TRÌNH VINH QUANG",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/c7331e2b-ad42-48d6-b901-b4d5656b86fd.jpg"
+  },
+  {
+    "id": 90,
+    "name": "CFVL 2025 SEASON 2",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/cfd0cc07-e7e6-4c70-9700-bb8362394c70.jpg"
+  },
+  {
+    "id": 145,
+    "name": "KHẮC ẤN NGÔI VƯƠNG",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 160,
+    "name": "CSC 2025 SEASON 2",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 146,
+    "name": "CFVL 2025 SEASON 1",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 63,
+    "name": "XỬ LÝ ĐỈNH CAO",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 141,
+    "name": "FC PRO FESTIVAL 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/d1ebec4e-7bfe-44a5-a139-0a5af5bd207e.png"
+  },
+  {
+    "id": 143,
+    "name": "SIÊU PHẨM ĐẸP MẮT",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 142,
+    "name": "HÀNH TRÌNH BIỂU TƯỢNG",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 105,
+    "name": "GIẢI VÔ ĐỊCH QUỐC GIA PUBG MOBILE - MÙA TỔNG KẾT",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/966a3e82-5c17-4657-aa24-b9d446de9aff.jpg"
+  },
+  {
+    "id": 98,
+    "name": "2025 PUBG MOBILE GLOBAL OPEN",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/2129c341-e41b-4603-b490-b516c5ccadaf.png"
+  },
+  {
+    "id": 106,
+    "name": "TOP MOMENTS PMNC",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 99,
+    "name": "ĐẲNG CẤP NGẮM BẮN",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 94,
+    "name": "VMC WINTER 2025",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/ccf2671f-201e-4bd1-a25f-8a993f333d2e.jpg"
+  },
+  {
+    "id": 110,
+    "name": "BLASTed MOMENTS",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 119,
+    "name": "THỢ SĂN CHIM SẺ MÙA 3",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/6160fdc8-e193-48fd-8ace-f7b1f79d6edd.png"
+  },
+  {
+    "id": 120,
+    "name": "\"THỢ SĂN\" HAY \"CON MỒI\"",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 55,
+    "name": "THỢ SĂN \"BỨT PHÁ\"",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 150,
+    "name": "KĨ NĂNG THIỆN XẠ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 54,
+    "name": "\"ĐỌ SÚNG\" MÃN NHÃN",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 70,
+    "name": "TOP PHA XỬ LÝ ĐỈNH CAO",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 52,
+    "name": "ESPORTS CÓ GÌ HOT?",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 3
+  },
+  {
+    "id": 65,
+    "name": "BÓNG ĐÁ CHÂU ÂU",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/449510dc-4041-41a8-a40b-7ee80089c1fd.jpg"
+  },
+  {
+    "id": 66,
+    "name": "CHAMPIONS LEAGUE 24/25",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 62,
+    "name": "EUROPA LEAGUE 24/25",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 61,
+    "name": "UEFA CONFERENCE LEAGUE 24/25",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 92,
+    "name": "BÓNG ĐÁ VIỆT ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/81bf4fe5-d4f2-41d9-b757-58d762f7e18f.jpg"
+  },
+  {
+    "id": 93,
+    "name": "TỔNG HỢP BÓNG ĐÁ SÂN 7",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 82,
+    "name": "BÓNG RỔ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/9a57b62e-6f99-448e-a7db-a9ab836bc3c3.png"
+  },
+  {
+    "id": 83,
+    "name": "GIẢI BÓNG RỔ VBA 2023",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 75,
+    "name": "PICKLEBALL",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/38f1c95a-de6f-483b-97c3-d16d8b42ebd9.jpg"
+  },
+  {
+    "id": 71,
+    "name": "PICKLEBALL CHÂU Á MỞ RỘNG - AOPC 2024",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 19,
+    "name": "NGHỆ THUẬT GIẢI TRÍ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 6,
+    "thumbnail_app": "https://cdn-img.onlivetv.vn/prod/1432x537/dd7c78da-b219-45b1-8654-fefb4e1ecb5c.png"
+  },
+  {
+    "id": 20,
+    "name": "CHỊ ĐẸP ĐẠP GIÓ RẼ SÓNG",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 38,
+    "name": "TIẾT MỤC SÂN KHẤU",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 2
+  },
+  {
+    "id": 14,
+    "name": "CÀNG XEM CÀNG NGHIỀN ",
+    "is_live": false,
+    "order_number": 0,
+    "type_block": 3
+  }
+]
+}

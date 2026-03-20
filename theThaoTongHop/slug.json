@@ -1,0 +1,271 @@
+{
+    "slug":[
+      
+      {
+        "id": 222,
+        "name": "TIN TỨC THỂ THAO",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 209,
+        "name": "Xem gì trên ONPlus ?",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 244,
+        "name": "CHAMPIONS LEAGUE",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 245,
+        "name": "EUROPA LEAGUE",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 249,
+        "name": "EUROPA CONFERENCE LEAGUE",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 248,
+        "name": "uefa youth league",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 293,
+        "name": "HIGHLIGHTS SERIE A",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 294,
+        "name": "TỔNG HỢP VÒNG ĐẤU SERIE A",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 124,
+        "name": "SERIE A SHOW",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 311,
+        "name": "HIGHLIGHTS Ligue 1",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 312,
+        "name": "TỔNG HỢP VÒNG ĐẤU LIGUE 1",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 130,
+        "name": "LIGUE 1 SHOW",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 195,
+        "name": "ROLAND GARROS",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 310,
+        "name": "ATP 500/250",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 296,
+        "name": "ATP 1000",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 322,
+        "name": "Davis Cup",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 319,
+        "name": "ATP Finals",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 295,
+        "name": "TỔNG HỢP ATP TOUR",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 227,
+        "name": "BÓNG CHUYỀN VĐQG",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 302,
+        "name": "Bóng chuyền U23 Quốc Gia",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 320,
+        "name": "Tạp Chí Bóng Chuyền",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 239,
+        "name": "VBA 2025",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 298,
+        "name": "VBA ACTIONS",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 220,
+        "name": "PGA TOUR: THE CUT",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 250,
+        "name": "BẢN TIN THẾ GIỚI GOLF",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 242,
+        "name": "THẾ GIỚI GOLF",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 1
+      },
+      {
+        "id": 299,
+        "name": "TỔNG HỢP MMA LION CHAMPIONSHIP",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 300,
+        "name": "LION ACTIONS",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 301,
+        "name": "DRAGON FIGHTING LEAGUE",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 317,
+        "name": "FCO ALL-STAR CHAMPIONSHIP 2025",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 286,
+        "name": "TIN TỨC ESPORTS",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 314,
+        "name": "ĐẤU TRƯỜNG DANH VỌNG MÙA ĐÔNG 2025",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 316,
+        "name": "2025 PMSL SEA FALL - PUBG M",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 297,
+        "name": "HUẤN LUYỆN VIÊN VĨ ĐẠI",
+        "is_live": false,
+        "type_block": 6,
+        "display_type": 0
+      },
+      {
+        "id": 39,
+        "name": "Nhà vô địch",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 318,
+        "name": "Anh Ngọc & Calcio",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      },
+      {
+        "id": 331,
+        "name": "Talk Sports",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 1
+      },
+      {
+        "id": 323,
+        "name": "Champions League Match Pack",
+        "is_live": false,
+        "type_block": 2,
+        "display_type": 0
+      }
+    ]
+}

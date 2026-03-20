@@ -54,11 +54,11 @@ idFooter.innerHTML = `
 
             <!-- Cột 2: Dịch vụ -->
             <div class="footer-col">
-                <h4>Dịch vụ</h4>
+                <h4>Công cụ / Nguồn</h4>
                 <ul>
-                    <li><a href="#">Gói cước Mobile</a></li>
-                    <li><a href="#">Dịch vụ truyền hình</a></li>
-                    <li><a href="#">Thể thao trực tiếp</a></li>
+                    <li><a target="_blank" href="/tools/shakatv/">Shaka TV</a></li>
+                    <li><a target="_blank" href="https://soixamapi.vercel.app/api/sports?id=iptv">IPTV FEED Origin</a></li>
+                    
                 </ul>
             </div>
 
@@ -66,11 +66,11 @@ idFooter.innerHTML = `
             <div class="footer-col">
                 <h4>Đối tác</h4>
                 <ul>
-                    <li><a href="https://vnepg.site/">VNEPG - EPG Việt Nam</a></li>
-                    <li><a href="https:fptplay.vn">FPTPlay</a></li>
-                    <li><a href="https://mytv.com.vn/">MyTV</a></li>
-                    <li><a href="https://tv360.vn">TV360</a></li> 
-                    <li><a href="https://vtvgo.vn">VTVGo</a></li>
+                    <li><a target="_blank" href="https://vnepg.site/">VNEPG - EPG Việt Nam</a></li>
+                    <li><a target="_blank" href="https://fptplay.vn">FPTPlay</a></li>
+                    <li><a target="_blank" href="https://mytv.com.vn/">MyTV</a></li>
+                    <li><a target="_blank" href="https://tv360.vn">TV360</a></li> 
+                    <li><a target="_blank" href="https://vtvprime.vn/">VTVPrime</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -89,6 +89,7 @@ idFooter.innerHTML = `
 
         <div class="footer-bottom">
             <p>&copy; 2025 SoiXamTV. All rights reserved.</p>
+            <p>Hãy mua gói cước nhà đài nếu bạn có điều kiện.</p>
         </div>
    
 `
@@ -148,10 +149,6 @@ const menu = [
     {
         name: "FPTPlay",
         link: "/fpt"
-    },
-    {
-        name: "VTVgo",
-        link: "/vtvgo"
     }
 ]
 
@@ -346,4 +343,4 @@ window.TetCinematicEffect = (function () {
 })();
 
 
- TetCinematicEffect.start();
+//  TetCinematicEffect.start();

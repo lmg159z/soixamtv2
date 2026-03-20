@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/videojs-http-source-selector/dist/videojs-http-source-selector.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/videojs-http-source-selector/dist/videojs-http-source-selector.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/controls.css">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/esports/stream/style.css">
+    <!-- <link rel="stylesheet" href="./css/tv.css"> -->
+
+</head>
+
+<body>
+
+    <!-- === HEADER === -->
+    <header id="header"> </header>
+
+
+    <!-- === CONTENT === -->
+    <main class="main-content">
+        <div id="tv-show">
+            <!-- CỘT TRÁI: VIDEO + THÔNG TIN -->
+            <div class="tv-main-column">
+                <!-- 1. VIDEO PLAYER (Luôn giữ tỷ lệ 16:9) -->
+                <div id="tv-show__live" data-shaka-player-container>
+                    <video id="myVideo" data-shaka-player autoplay muted 
+                        poster=""></video>
+                    <!-- Watermark ví dụ nếu cần -->
+                    <div class="yt-watermark"></div>
+                </div>
+
+                <!-- 2. THÔNG TIN BÊN DƯỚI VIDEO (Title, Time, Share) -->
+                <div class="tv-show__info">
+                    <h1 class="video-title" id="video-title"></h1>
+                    <div class="video-meta">
+                        <span class="video-time" id="video-time"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CỘT PHẢI: DANH SÁCH VIDEO LIÊN QUAN -->
+            <div id="tv-show__schedule">
+                <h3 class="schedule-header">Video liên quan</h3>
+                <div class="schedule-list" id="listVideo">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- === FOOTER === -->
+    <footer id="footer"> </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.compiled.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.9.6/shaka-player.ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="/javaScript/index.js"></script>
+    <script src="/javaScript/layout.js"></script>
+    <script src="/javaScript/tv.js"></script>
+    <script src="/esports/stream/index.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,9 +3,10 @@
 (async ( )=> {
     const onLive = document.getElementById("onLive")
     // const API = await getAPI("https://livestream.ghiminh1.workers.dev/")
-    const API = await getAPI(`https://service.onlive.vn/api/get-list-live-subcategory?orderBy=view&page=1&limit=300`)
+    const API = await getAPI(`https://service.onlive.vn/api/get-list-live-subcategory?page=1&limit=300`)
     console.log(API)
     const data = API?.data.map(i =>{
+      // console.log(`https://stimg.onlive.vn/LOGO/${i.user_id.slice(2)}/${i.user_id}/${i.user_id}.jpg`)
         return `
         <a href="/onLive/live/index.html?id=${i.user_id}" >
             <div class="stream-card">
@@ -15,7 +16,7 @@
             <span class="label label-cat">${i.cate_name}</span>
         </div>
         <div class="info-box">
-            <img src="https://stimg.onlive.vn/LOGO/ve/${i.user_id}/${i.user_id}.jpg" class="user-avatar" alt="avt">
+            <img src="https://stimg.onlive.vn/LOGO/${i.user_id.slice(0,2)}/${i.user_id}/${i.user_id}.jpg" class="user-avatar" alt="avt">
             <div class="text-content">
                 <h3 class="stream-title">${i.broad_title}</h3>
                 <p class="user-name">${i.user_nick}</p>
